@@ -1,0 +1,14 @@
+#horizontal-main{
+    background-color: #eef2f9;
+}
+.horizontalMenu>.horizontalMenu-list>li>a {
+    color: #ce2230;
+}
+
+@media (max-width: 991px){.horizontalMenu>.horizontalMenu-list>li>a.active {
+    background-color: #ce2230;
+}}
+
+.bg-background2:before {
+       background: linear-gradient(-225deg, rgba(51, 51, 51,0.8) 48%, rgba(51, 51, 51,0.8) 100%);
+}

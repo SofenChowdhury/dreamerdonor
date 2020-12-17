@@ -1,0 +1,82 @@
+{% extends 'admin/layouts/back_layout.html' %}
+{% block contants %}
+{% load static %}
+<div class="row">
+	<div class=" col-sm-12 col-md-6 col-lg-6 col-xl-4">
+		<div class="card overflow-hidden">
+			<div class="card-header">
+				<h3 class="card-title">Total Dreamer</h3>
+				<div class="card-options"></div>
+			</div>
+			<div class="card-body ">
+				<h2 class="text-dark  mt-0 font-weight-bold">{{total_agent}}</h2>
+				<div class="progress progress-sm mt-0 mb-2">
+					<div class="progress-bar bg-secondary w-{% widthratio total_agent total_user 100 %}" role="progressbar"></div>
+				</div>
+				<div class=""><i class="fa fa-caret-down text-danger"></i>{% widthratio total_agent total_user 100 %}% Agent</div>
+			</div>
+		</div>
+	</div>
+	<div class=" col-sm-12 col-md-6 col-lg-6 col-xl-4">
+		<div class="card overflow-hidden">
+			<div class="card-header">
+				<h3 class="card-title">Total Donor</h3>
+				<div class="card-options"></div>
+			</div>
+			<div class="card-body ">
+				<h2 class="text-dark  mt-0 font-weight-bold">{{total_sell}}</h2>
+				<div class="progress progress-sm mt-0 mb-2">
+					<div class="progress-bar bg-warning w-{% widthratio total_sell total_properties 100 %}" role="progressbar"></div>
+				</div>
+				<div class=""><i class="fa fa-caret-down text-danger"></i>{% widthratio total_sell total_properties 100 %}% Sell Property</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 ">
+		<div class="card overflow-hidden">
+			<div class="card-header">
+				<h3 class="card-title">Total Ideas</h3>
+				<div class="card-options"></div>
+			</div>
+			<div class="card-body ">
+				<h2 class="text-dark  mt-0  font-weight-bold">{{total_rent}}</h2>
+				<div class="progress progress-sm mt-0 mb-2">
+					<div class="progress-bar bg-info w-{% widthratio total_rent total_properties 100 %}" role="progressbar"></div>
+				</div>
+				<div class=""><i class="fa fa-caret-up text-success"></i>{% widthratio total_rent total_properties 100 %}% Rental Property</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 ">
+		<div class="card overflow-hidden">
+			<div class="card-header">
+				<h3 class="card-title">Total Admin</h3>
+				<div class="card-options"></div>
+			</div>
+			<div class="card-body ">
+				<h2 class="text-dark  mt-0  font-weight-bold">{{total_admin}}</h2>
+				<div class="progress progress-sm mt-0 mb-2">
+					<div class="progress-bar bg-info w-{% widthratio total_admin total_user 100 %}" role="progressbar"></div>
+				</div>
+				<div class=""><i class="fa fa-caret-up text-success"></i>{% widthratio total_admin total_user 100 %}% Admins</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 ">
+		<div class="card overflow-hidden">
+			<div class="card-header">
+				<h3 class="card-title">Total Supper-Admin</h3>
+				<div class="card-options"></div>
+			</div>
+			<div class="card-body ">
+				<h2 class="text-dark  mt-0  font-weight-bold">{{total_supper_admin}}</h2>
+				<div class="progress progress-sm mt-0 mb-2">
+					<div class="progress-bar bg-info w-{% widthratio total_supper_admin total_user 100 %}" role="progressbar"></div>
+				</div>
+				<div class=""><i class="fa fa-caret-up text-success"></i>{% widthratio total_supper_admin total_user 100 %}% Supper Admin</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

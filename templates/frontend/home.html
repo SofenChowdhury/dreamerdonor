@@ -1,0 +1,107 @@
+{% extends "frontend/layout/base.html" %}
+{% block contents %}
+{% load static %}
+{% load humanize %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+    .text-muted{
+        color:black !important;
+        font-weight:bold;
+    }
+    h2{
+        font-size:20px;
+        font-weight:bold;
+        color:#ec1f27;
+        font-family: sans-serif;
+    }
+    .owl-carousel{
+        margin-top:-25px;
+    }
+    .form-control{
+        color:#969595 !important;
+    }
+    .tagType li:hover{
+        background-color: #ec1f27;
+        cursor: pointer;
+        color: white;
+    }
+    .nav_active{
+        background-color:#4a4747 !important;
+
+    }
+
+    #myInputautocomplete-list{
+        text-align:left !important;
+    }
+    #myInputautocomplete-list strong{
+        /*color:#ec1f27;*/
+        border-bottom:2px solid green;
+    }
+    .card
+</style>
+{% if companyInfo %}
+<section class="sptb bg-white" style="padding-top:30px;background-color:#efefef!important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;">
+                <h3>{{companyInfo.title}}</h3><br>
+                <p style="">
+                    {{companyInfo.description}}
+                </p>
+            </div>
+            <div class="col-md-6">
+                <iframe width="100%"
+                        height="315"
+                        src="{{companyInfo.video_link}}"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+<section class="sptb bg-white">
+    <div class="container">
+        <style>
+            .content-title{
+               line-height:32px;
+            }
+            .content-title span:hover{
+                padding-left: 10px;
+                padding: 10px 15px;
+                background-color: #ffffff;
+                border-radius: 50px;
+                width: 118px;
+                box-shadow: 3px 3px 0px 0px #e8e8e8;
+            }
+        </style>
+        <div class="section-title center-block text-left">
+            <h2 class="content-title"><span>Dreamers</span></h2>
+            <!--<p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>-->
+        </div>
+        <div id="myCarousel1" class="owl-carousel owl-carousel-icons2">
+            <!-- Latest Dreamer -->
+            {% for all_dreamers in get_all_dreamers %}
+            <div class="item">
+                <div class="card mb-0" style="border-top-left-radius:20px;border-top-right-radius:20px;border-bottom-left-radius:20px;border-bottom-right-radius:20px;">
+                    <div class="item-card2-img" style="border-top-left-radius:20px;border-top-right-radius:20px;">
+                        <a href="idea/list/{{all_dreamers.user_id_id}}"></a>
+                        <img src="/{{all_dreamers.image}}" alt="img" class="cover-image" style="height:250px;">
+                    </div>
+                    <div class="card-body" style="height:100px;">
+                        <div class="item-card2">
+                            <div class="item-card2-text">
+                                <a href="idea/list/{{all_dreamers.user_id_id}}" class="text-dark"><h5 class="" style="letter-spacing:1px;font-weight:500;text-align: right;">{{all_dreamers.user_id.username}}</h5></a>
+                                <p class="mb-2" style="font-size:11px;pading-right:30px; text-align: right;"><i class="fa fa-map-marker text-danger mr-1"></i>{{all_dreamers.country}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends 'admin/layouts/back_layout.html' %}
+{% block contants %}
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+    .green{
+        background-color:green;
+        color:white;
+    }
+    .tomato{
+        background-color:tomato;
+        color:white;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">{{title}}</div>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table id="example" class="table table-striped table-bordered" >
+						<thead>
+							<tr>
+								<th class="wd-15p">#SL</th>
+								<th class="wd-15p">ID</th>
+								<th class="wd-20p">Image</th>
+								<th class="wd-15p">Title</th>
+								<th class="wd-15p">Sub-Title</th>
+								<th class="wd-15p">Posted By</th>
+								<th class="wd-25p">Description</th>
+								<th class="wd-25p">Status</th>
+								<th class="wd-25p">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for idea in get_idea %}
+							<tr>
+								<td>{{forloop.counter}}</td>
+								<td>#{{idea.id}}</td>
+								<td style="width:15%;"><a href="#" id="get_idea_image{{idea.id}}"></a></td>
+								<td><a href="#">{{idea.title}}</a></td>
+								<td><a href="#">{{idea.sub_title}}</a></td>
+								<td>{{idea.user_id}}</td>
+								<td>{{idea.description}}</td>
+								{% if idea.status == '1' %}
+								<td class="green" id="status{{idea.id}}">Active</td>
+								{% else %}
+								<td class="tomato" id="status{{idea.id}}">Pending</td>
+								{% endif %}
+								<td>
+									<!--<span class="btn btn-info" style="font-size: 10px;padding:0px;"><a href="properties/property_details/{{idea.id}}" style="color: white;"> view </a></span>-->
+									<span class="btn btn-success" style="font-size: 10px;padding:0px;"><a href="idea_edit/{{idea.id}}" style="color: white;">Edit</a></span>
+									<span class="btn btn-danger" style="font-size: 10px;padding:0px;"><a href="/idea/delete/{{idea.id}}" style="color: white;" onclick="return confirm('Are you sure you want to delete this?');">Delete</a></span>
+									<span class="btn btn-default">
+										<input type="hidden" name="" id="property_id{{idea.id}}" value="{{idea.id}}">
+										<select class="" style="font-size: 13px;padding:0px;height: 20px;" id="action{{idea.id}}" onchange="changeStatus({{idea.id}})">
+											{% if idea.status == '1' %}
+											<option value=""> Approved </option>
+											{% else %}
+											<option value=""> Pending </option>
+											{% endif %}
+											<option value="1"> Active </option>
+											<option value="0"> Panding </option>
+										</select>
+									</span>
+								</td>
+							</tr>
+							<script>
+						        $.ajaxSetup({
+						                    headers: {
+						                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+						                    }
+						                });
+                                $.ajax({
+                                    url: "/dreamer/idea/image"+'/'+{{idea.id}},
+                                    method: 'get',
+
+                                    success: function(result){
+                                        console.log(result);
+                                        $('#get_idea_image').empty();
+                                        for (var i = 0; i < result.length; i++) {
+                                            $('#get_idea_image'+{{idea.id}}).append('<img src="/'+result[i].Image+'" style="width:60px;">');
+                                        }
+                                    }
+                                });
+							</script>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- table-wrapper -->
+		</div>
+		<!-- section-wrapper -->
+		<script>
+		    function changeStatus(id){
+		        var status = $('#action'+id).find('option:selected').val();
+		        var r = confirm("Are you sure!");
+		     //   window.location.replace("/action/"+action+"/"+property_id);
+		        if (r == true) {
+                    $.ajax({
+                        url: "/action/"+status+"/"+id,
+                        method: 'get',
+
+                        success: function(result){
+                                console.log(result);
+                                $("#status"+id).empty();
+                                if(status == '1'){
+                                    $("#status"+id).removeClass('tomato');
+                                    $("#status"+id).addClass('green');
+                                    $("#status"+id).text('Approved');
+                                    $("#selectStatus"+id).text('Active');
+                                    $("#selectStatus"+id).val('1');
+
+                                }else{
+                                    $("#status"+id).removeClass('green');
+                                    $("#status"+id).addClass('tomato');
+                                    $("#status"+id).text('pending');
+                                    $("#selectStatus"+id).text('Pending');
+                                    $("#selectStatus"+id).val('0');
+                                }
+                            }
+                    });
+                }else {
+                    location.reload();
+                }
+		    }
+		</script>
+	</div>
+</div>
+{% endblock %}
+{% block css %}
+<link href="{% static 'plugins/datatable/dataTables.bootstrap4.min.css' %}" rel="stylesheet" />
+<link href="{% static 'plugins/datatable/jquery.dataTables.min.css' %}" rel="stylesheet" />
+{% endblock %}
+{% block js %}
+<!-- Data tables -->
+<script src="{% static 'plugins/datatable/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatable/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/datatable.js' %}"></script>
+<!-- Custom Js-->
+<script src="{% static 'js/admin-custom.js' %}"></script>
+{% endblock %}

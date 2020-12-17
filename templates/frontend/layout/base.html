@@ -1,0 +1,1024 @@
+<!doctype html>
+{% load static %}
+{% load i18n static %}
+<html lang="en">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+
+    <!-- Title -->
+    <title>Dreamer Donor</title>
+    <!-- ManyChat -->
+    <script src="//widget.manychat.com/101903607952219.js" async="async"></script>
+    <!-- Bootstrap Css -->
+    <link href="{% static "plugins/bootstrap-4.3.1-dist/css/bootstrap.min.css" %}" rel="stylesheet"/>
+
+    <!-- Style css -->
+    <link href="{% static "css/style.css" %}" rel="stylesheet"/>
+
+    <!-- Font-awesome  Css -->
+    <link href="{% static "css/icons.css" %}" rel="stylesheet"/>
+
+    <!--Horizontal Menu-->
+    <link href="{% static "plugins/horizontal-menu/horizontal.css" %}" rel="stylesheet"/>
+
+    <!--Select2 Plugin -->
+    <link href="{% static "plugins/select2/select2.min.css" %}" rel="stylesheet"/>
+
+    <!-- Cookie css -->
+    <!--<link href="{% static "plugins/cookie/cookie.css" %}" rel="stylesheet">-->
+
+    <!-- Owl Theme css-->
+    <link href="{% static "plugins/owl-carousel/owl.carousel.css" %}" rel="stylesheet"/>
+
+    <!-- Custom scroll bar css-->
+    <link href="{% static "plugins/scroll-bar/jquery.mCustomScrollbar.css" %}" rel="stylesheet"/>
+
+    <!-- Color skin-->
+    <link href="{% static "search/css/main.css" %}" rel="stylesheet" />
+
+    <link id="theme" rel="stylesheet" type="text/css" media="all" href="{% static "skins/color-skins/color15.css" %}"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"/>
+    <link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+
+    <style>
+        .btn_login:hover{
+            background-color:white !important;
+        }
+        .btn_login:hover i{
+            /*background-color:white !important;*/
+            color:gray !important;
+        }
+        ul li:hover a{
+            /*background-color:#ffffff4d !important;*/
+        }
+        ul li:hover .btn_post_idea{
+            background-color:#ffffff4d !important;
+            border-radius:50px !important;
+            color:white !important;
+        }
+
+        ul li:hover a i{
+            background-color:transparent !important;
+            color:gray !important;
+        }
+        ul li:hover a span{
+            background-color:transparent !important;
+            color:gray !important;
+        }
+
+        @media (max-width:320px) {
+        	.portfolio_images_overlay{
+        		padding: 20px;
+        	}
+        }
+
+        .sticky-wrapper{
+            background-color: #00000021;
+        }
+        .sticky-wrapper ul li:hover a{
+            border-bottom:2px solid white !important;
+        }
+
+        .is-sticky ul li:hover a{
+            color:gray !important;
+            border-bottom:2px solid gray !important;
+        }
+        .is-sticky ul li .dropdown :hover a{
+            color:gray !important;
+            border-bottom:2px solid white !important;
+        }
+        .is-sticky ul .active a{
+            color:gray !important;
+            border-bottom:2px solid gray !important;
+            padding: 10px 0px !important;
+
+        }
+        .active{
+            padding: 10px 0px !important;
+        }
+        .is-sticky{
+            background-color:lightgray !important;
+        }
+        .is-sticky ul li a{
+            color:#093633 !important;
+        }
+        .btn_login:hover i{
+            background-color:transparent !important;
+        }
+        .horizontal-main{
+            background-color:transparent;
+        }
+        .horizontalMenu>.horizontalMenu-list>li{
+            padding: 0.2rem 0 !important;
+        }
+
+        /*********************** Demo - 1 *******************/
+        .box1 img,.box1:after,.box1:before{width:100%;transition:all .3s ease 0s}
+        .box1 .icon,.box2,.box3,.box4,.box5 .icon li a{text-align:center}
+        .box10:after,.box10:before,.box1:after,.box1:before,.box2 .inner-content:after,.box3:after,.box3:before,.box4:before,.box5:after,.box5:before,.box6:after,.box7:after,.box7:before{content:""}
+        .box1,.box11,.box12,.box13,.box14,.box16,.box17,.box18,.box2,.box20,.box21,.box3,.box4,.box5,.box5 .icon li a,.box6,.box7,.box8{overflow:hidden}
+        .box1 .title,.box10 .title,.box4 .title,.box7 .title{letter-spacing:1px}
+        .box3 .post,.box4 .post,.box5 .post,.box7 .post{font-style:italic}
+        .mt-30{margin-top:30px}
+        .mt-40{margin-top:40px}
+        .mb-30{margin-bottom:30px}
+        .box1 .icon,.box1 .title{margin:0;position:absolute}
+        .box1{box-shadow:0 0 3px rgba(0,0,0,.3);position:relative}
+        .box1:after,.box1:before{height:50%;background:rgba(0,0,0,.5);position:absolute;top:0;left:0;z-index:1;transform-origin:100% 0;transform:rotateZ(90deg)}
+        .box1:after{top:auto;bottom:0;transform-origin:0 100%}
+        .box1:hover:after,.box1:hover:before{transform:rotateZ(0)}
+        .box1 img{height:auto;transform:scale(1) rotate(0)}
+        .box1:hover img{filter:sepia(80%);transform:scale(1.3) rotate(10deg)}
+        .box1 .title{font-size:19px;font-weight:600;color:#fff;text-transform:uppercase;text-shadow:0 0 1px #004cbf;bottom:10px;left:10px;opacity:0;z-index:2;transform:scale(0);transition:all .5s ease .2s}
+        .box1:hover .title{opacity:1;transform:scale(1)}
+        .box1 .icon{padding:7px 5px;list-style:none;background:#004cbf;border-radius:0 0 0 10px;top:-100%;right:0;z-index:2;transition:all .3s ease .2s}
+        .box1:hover .icon{top:0}
+        .box1 .icon li{display:block;margin:10px 0}
+        .box1 .icon li a{display:block;width:35px;height:35px;line-height:35px;border-radius:10px;font-size:18px;color:#fff;transition:all .3s ease 0s}
+        .box2 .icon li a,.box3 .icon a:hover,.box4 .icon li a:hover,.box5 .icon li a,.box6 .icon li a{border-radius:50%}
+        .box1 .icon li a:hover{color:#fff;box-shadow:0 0 10px #000 inset,0 0 0 3px #fff}
+        @media only screen and (max-width:990px){.box1{margin-bottom:30px}
+        }
+        /*********************** Demo - 2 *******************/
+        .box2{position:relative}
+        .box2 img{width:100%;}
+        .box2 .box-content{width:100%;height:100%;position:absolute;top:50%;left:50%;z-index:2;transform:translate(-50%,-50%)}
+        .box2 .box-content:after,.box2 .box-content:before,.box2:after,.box2:before{content:"";width:80%;height:80%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);transition:all .5s ease 0s}
+        .box2:before{background:linear-gradient(45deg,rgba(0,0,0,.2) 49%,transparent 50%);left:-100%}
+        .box2:after{background:linear-gradient(45deg,transparent 49%,rgba(0,0,0,.2) 50%);left:160%}
+        .box2 .box-content:after,.box2 .box-content:before{width:65%;height:65%;background:linear-gradient(45deg,rgba(0,0,0,.3) 49%,transparent 50%);left:-100%;transition-delay:.1s}
+        .box1 .box-content:after{background:linear-gradient(45deg,transparent 49%,rgba(0,0,0,.3) 50%);left:160%}
+        .box2:hover .box-content:after,.box2:hover .box-content:before,.box2:hover:after,.box2:hover:before{left:50%}
+        .box2 .inner-content{width:50%;height:50%;color:#fff;padding:40px 0;position:absolute;top:50%;left:50%;z-index:2;transform:translate(-50%,-50%) scale(0);transition:all .3s ease .2s}
+        .box2 .inner-content:after{width:100%;height:100%;background:rgba(255,79,79,.8);position:absolute;top:50%;left:50%;z-index:-1;transform:translate(-50%,-50%) rotate(45deg)}
+        .box2:hover .inner-content{transform:translate(-50%,-50%) scale(1);transition:all .3s ease 0s}
+        .box2 .title{font-size:18px;font-weight:700;text-transform:uppercase;margin-bottom:5px}
+        .box2 .post{display:block;font-size:14px;text-transform:capitalize;margin-bottom:7px}
+        .box10 .title,.box11 .title,.box4 .title,.box5 .title,.box6 .box-content,.box7 .title{text-transform:uppercase}
+        .box2 .icon{padding:0;margin:0;list-style:none;transform:rotateY(360deg) scale(0);transition:all .3s ease 0s}
+        .box2:hover .icon{transform:rotateY(0) scale(1)}
+        .box2 .icon li{display:inline-block;margin:0 3px}
+        .box2 .icon li a{display:block;width:35px;height:35px;line-height:35px;background:#fff;font-size:16px;color:#505050;transition:all .3s ease 0s}
+        .box2 .icon li a:hover{box-shadow:0 0 0 5px rgba(0,0,0,.5);background:#fff;color:#ff4f4f}
+        @media only screen and (max-width:990px){.box2{margin-bottom:30px}
+        }
+        @media only screen and (max-width:320px){.box2 .inner-content{padding:25px 0}
+        .box2 .title{font-size:16px}
+        }
+        /*********************** Demo - 2 *******************/
+        .box4{position:relative}
+        .box4:before{width:0;height:200%;background:rgba(0,0,0,.5);position:absolute;top:0;left:-250px;bottom:0;transform:skewX(-36deg);transition:all .5s ease 0s}
+        .box4:hover:before{width:200%}
+        .box4 img{width:100%;height:auto}
+        .box4 .box-content{width:100%;height:100%;padding-top:55%;position:absolute;top:0;left:0;transform:scale(0);transition:all .3s ease 0s}
+        .box4 .icon,.box5 .icon{list-style:none;padding:0}
+        .box4:hover .box-content{transform:scale(1)}
+        .box4 .title{font-size:22px;font-weight:700;color:#fff;margin:0 0 10px}
+        .box4 .post{display:block;font-size:15px;font-weight:600;color:#fff;margin-bottom:20px;}
+        .box4 .icon{margin:0}
+        .box4 .icon li{display:inline-block}
+        .box4 .icon li a{display:block;width:35px;height:35px;line-height:35px;font-size:20px;background:#fff;color:#ee4266;margin-right:10px;transition:all .3s ease 0s}
+        .box5 .icon,.box5 .icon li{display:inline-block}
+        @media only screen and (max-width:990px){.box4{margin-bottom:30px}
+        }
+        @media only screen and (max-width:767px){.box4:before{left:-400px}
+        .box4:hover:before{width:300%}
+        }
+         @media only screen and (min-width:990px){
+             .horizontalMenu-list li a{
+                 color:white !important;
+             }
+        }
+        @media only screen and (max-width:700px){
+             .horizontalMenu-list li a{
+                 /*color:white !important;*/
+                 padding-left:10px !important;
+             }
+        }
+        @media only screen and (max-width:950px){
+             .horizontalMenu-list li a{
+                 /*color:white !important;*/
+                 padding-left:10px !important;
+             }
+        }
+        @media only screen and (min-width:992px){
+             .horizontalMenu-list li a{
+                 color:white !important;
+             }
+        }
+        /*@media (max-width: 1350px) and (min-width: 992px){*/
+        /*    .horizontalMenu-list li a{*/
+        /*         color:white !important;*/
+        /*     }*/
+        /*}*/
+        .box4{
+            margin-bottom:10px;
+            width:105%;
+        }
+        .box4 img{
+            border-radius:10px;
+            /*height:200px;*/
+        }
+        ul li a{
+            font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+            font-weight:normal;
+        }
+        #bottom-most {
+            font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+            font-weight:normal;
+        }
+        a b {
+            font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+            font-weight:normal;
+        }
+        #myCarousel1{
+            font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+            font-weight:normal;
+
+        }
+
+    </style>
+
+    {% block css %}
+
+    {% endblock %}
+
+</head>
+<body>
+
+    <div class="header-main">
+        <!-- Header -->
+        <div class="horizontal-header clearfix ">
+            <div class="container">
+                <a id="horizontal-navtoggle" class="animated-arrow"><span></span></a>
+                <!--<span class="smllogo"><img src="{% static '/images/brand/101.png' %}" width="120" alt="" style="padding: 5px 0px 10px 0px"/></span>-->
+                <a href="{% url 'home' %}">
+                    <span class="smllogo">
+                        <h3> Dreamer & Donor </h3>
+                        <!--<h2 style="padding: 0px 0px 0px 0px;font-family: system-ui;font-size: 33px;color:white;"> Dream & Donor</h2>-->
+                        <!--<img src="/assets/uploads/Idea/dd logo edited.jpg" style="border-radius: 5px;height: 45px;width: 150px;padding-bottom: 10px">-->
+                    </span>
+                </a>
+                <!--<a href="tel:8801880088226" class="callusbtn"><i class="fa fa-phone" aria-hidden="true"></i></a>-->
+            </div>
+        </div>
+        <!-- /Header -->
+        <!-- Horizontal-menu -->
+        <div class="horizontal-main bg-dark-transparent clearfix" id="horizontal-main">
+            <div class="horizontal-mainwrapper container clearfix" style="padding-top: 15px;">
+                <div style="margin-left: 0" class="desktoplogo">
+                    <!--<a href="{% url 'home' %}"><img style="height: 67px;width: 200px; padding: 5px 0px 15px 0px;" src="{% static '/images/brand/101.png' %}" alt=""></a>-->
+                    <a href="{% url 'home' %}">
+                        <h2 style="padding: 0px 0px 0px 0px;font-family: system-ui;font-size: 33px;color:white;"> Dreamer & Donor</h2>
+                        <!--<img src="/assets/uploads/Idea/dd logo edited.jpg" style="border-radius: 5px;height: 60px;width: 150px;padding-bottom: 10px">-->
+                    </a>
+                </div>
+                <div style="margin-left:0;padding: 0.25rem 0;" class="desktoplogo-1">
+                    <!--<a href="{% url 'home' %}"><img style="height: 67px;width: 200px; padding: 5px 0px 15px 0px;" src="{% static 'images/brand/101.png' %}"alt=""></a>-->
+                    <a href="{% url 'home' %}">
+                        <h2 style="padding: 0px 0px 0px 0px;font-family: system-ui;font-size: 33px;"> Dreamer & Donor </h2>
+                        <!--<img src="/assets/uploads/Idea/dd logo edited.jpg" style="border-radius: 5px;height: 60px;width: 150px;padding-bottom: 10px">-->
+                    </a>
+                </div>
+                <!--Nav-->
+                <nav class="horizontalMenu clearfix d-md-flex">
+                    <ul class="horizontalMenu-list">
+                        <li aria-haspopup="true"><a href="{% url 'home' %}" style="font-size: 14px;">Home </a></li>
+                        <li aria-haspopup="true"><a href="{% url 'idea_list' %}" style="font-size: 14px;">Ideas</a></li>
+                        <li aria-haspopup="true"><a href="{% url 'about' %}" style="font-size: 14px;">About Us </a></li>
+                        <li aria-haspopup="true"><a href="{% url 'contact' %}" style="font-size: 14px;"> Contact Us</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li aria-haspopup="true"><a href="{% url 'post_idea' %}" class="btn_post_idea" style="font-size: 14px;"> Post Idea </a></li>
+                        {% else %}
+                        <li aria-haspopup="true"><a href="#" data-toggle="modal" data-target="#signInModal" class="btn_post_idea" style="font-size: 14px;"> Post Idea </a></li>
+                        {% endif %}
+                        <li class="dropdown">
+                            <a href="#" class="btn_login" data-toggle="dropdown" style="border-radius: 50px;background-color: white;padding:0px;">
+                                <i class="fa fa-bars mr-1" style="color:gray !important;padding-top: 10px;padding-left: 14px;"></i>
+                                <span class="fa fa-user-circle-o" style="color:gray !important;padding-left:10px;font-size: 25px;"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                {% if request.user.is_authenticated %}
+                                <a href="{% url 'dashboard' %}" class="dropdown-item"  style="color:gray !important;">
+                                    <i class="dropdown-icon icon icon-user"></i> My Panel
+                                </a>
+                                <a class="dropdown-item" href="/admin/logout?next=/" style="color:gray !important;">
+                                    <i class="dropdown-icon icon icon-power"></i> Log out
+                                </a>
+                                {% else %}
+                                <a href="#" data-toggle="modal" data-target="#signUpModal" class="dropdown-item"  style="color:gray !important;">
+                                    <i class="dropdown-icon icon icon-user"></i> Sign Up
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#signInModal" class="dropdown-item"  style="color:gray !important;">
+                                    <i class="dropdown-icon icon icon-key"></i> Sign In
+                                </a>
+
+                                {% endif %}
+                                <a class="dropdown-item" href="{% url 'contact' %}" style="color:gray !important;">
+                                    <i class="dropdown-icon fa fa-volume-control-phone"></i> Help
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <!--Nav-->
+            </div>
+        </div>
+    </div>
+    <!--/Horizontal-main -->
+    <form action="{% url 'search' %}" method="GET" enctype="multipart/form-data">
+        {% csrf_token %}
+    <section>
+        <div style="background-image: url('/assets/images/banners/Homepage Background OG.jpg');background-size:cover;">
+            <div class="s011" style="background:rgba(0, 0, 0, 0.3.7);display: block;">
+
+                <center>
+                    <fieldset>
+                      <h3></h3>
+                      <!--<p style="color: white;font-weight: bold;"> slider.sub_title }}</p>-->
+                    </fieldset>
+                    <div class="inner-form" style="width: 98%;">
+                        <div class="container" style="padding-bottom: 50px;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row" style="padding-right:60px;padding-top:200px">
+                                        <div class="col-md-12 dreamer" style="padding-top:5px;padding-bottom:5px;margin-bottom:20px;background-color:#21212166;border-radius: 30px">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control search-form" placeholder="Locate a Dreamer" style="border-radius: 60px;" name="dreamer" id="dreamerIdea">
+                                                <span class="input-group-btn" style="margin-left:-39px;z-index:10">
+                                                    <button  style="border-radius: 60px;background-color:#ff385c;" type="submit" class="btn btn-primary search-btn" data-target="#search-form" name="dreamer_search">
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        {% for dreamer in get_dreamer %}
+                                                        <div class="col-md-6 col-sm-12">
+                                                            <div class="box4">
+                                                                <img src="/{{dreamer.image}}" style="height: 250px;">
+                                                                <div class="box-content">
+                                                                    <h3 class="title">{{dreamer.user_id.username}}</h3>
+                                                                    <span class="" style="color:white">{{dreamer.country}}</span>
+                                                                    <ul class="icon">
+                                                                        <li><a href="idea/list/{{dreamer.user_id_id}}"><i class="fa fa-search"></i></a></li>
+                                                                        <li><a href="idea/list/{{dreamer.user_id_id}}"><i class="fa fa-link"></i></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row" style="padding-left:60px;padding-top:200px">
+                                        <div class="col-md-12" style="padding-top:5px;padding-bottom:5px;margin-bottom:20px;background-color:#21212166;border-radius: 30px">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control search-form" placeholder="Locate a Donor" style="border-radius: 60px;" name="donor" id="donorUser">
+                                                <span class="input-group-btn" style="margin-left:-39px;z-index:10">
+                                                    <button style="border-radius: 60px;background-color:#ff385c;" type="submit" class="btn btn-primary search-btn" data-target="#search-form" name="donor_search">
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div class="row">
+                                                {% for donor in get_donor %}
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="box4">
+                                                        <img src="/{{donor.image}}" style="height: 250px;">
+                                                        <div class="box-content">
+                                                            <h3 class="title">{{donor.user_id.username}}</h3>
+                                                            <span class="" style="color:white">{{donor.country}}</span>
+                                                            <ul class="icon">
+                                                                <li><a href="idea/list/{{donor.user_id_id}}"><i class="fa fa-search"></i></a></li>
+                                                                <li><a href="idea/list/{{donor.user_id_id}}"><i class="fa fa-link"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </section>
+    </form>
+    <!-- carouselCategories Section-->
+    <section class="categories">
+        <div class="container">
+            <div class="form-group">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li>
+                        <div class="alert alert-{{message.level_tag}}" id="msg">
+                            {{ message }}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+        </div>
+    </section>
+    <!--/Section-->
+
+    <!-- Contents -->
+    {% block contents %}
+
+    {% endblock %}
+    <!-- End Contents -->
+
+    <!-- Newsletter-->
+
+
+        {% block advertisement %}
+        {% endblock %}
+
+
+            <!-- Modal -->
+        <div class="btn-float" id="contact">
+            <button data-toggle="modal" data-target="#contactUs" type="button" class="btn btn-default btn-circle btn-xl btn-lateral"><i class="glyphicon glyphicon-envelope"></i></button>
+        </div>
+
+        </div>
+        <style>
+            .btn_close{
+                background-color:white;
+                padding: 5px 9px;
+                border-radius: 50px;
+                cursor:pointer;
+            }
+            .btn_close:hover{
+                background-color:#faf7f7;
+                padding: 5px 9px;
+                border-radius: 50px;
+                cursor:pointer;
+            }
+            .btn_sign{
+                background: linear-gradient(to right, rgb(230, 30, 77) 0%,
+                            rgb(227, 28, 95) 50%,
+                            rgb(215, 4, 102) 100%) !important;
+                color:white;
+            }
+            .txtInput{
+                height: 56px;
+                border: 1px solid darkgrey;
+            }
+        </style>
+        <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content" style="border-radius: 20px;">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <span data-dismiss="modal" class="btn_close"><span class="lni lni-close"></span></span>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="modal-title"
+                                    id="myModalLabel"
+                                    style="text-align:center;
+                                         margin-top: -5px;
+                                         font-family: Circular,
+                                            -apple-system,
+                                            BlinkMacSystemFont,
+                                            Roboto,
+                                            Helvetica Neue,
+                                            sans-serif;
+                                        font-size: 18px;
+                                        font-weight: bold;">
+                                    Sign In
+                                </h3>
+                            </div>
+                        </div>
+                        <style>
+                            .text-divider{margin: 2em 0; line-height: 0; text-align: center;}
+                            .text-divider span{background-color: #ffffff; padding: 1em;}
+                            .text-divider:before{ content: " "; display: block; border-top: 1px solid #e3e3e3; border-bottom: 1px solid #f7f7f7;}
+                            .btn-social{
+                                border: 2px solid lightgray;
+                            }
+                            .btn-social:hover{
+                                border:2px solid black;
+                            }
+                        </style>
+                        <hr style="margin-top: 15px;">
+                        <div class="account-wall">
+                            <form action="{% url 'login' %}" method="post" id="login-form">
+					            {% csrf_token %}
+                                <input type="text" id="username-input" name="username" class="form-control txtInput" placeholder="Your email first part is your Default Username" required autofocus style="border-top-left-radius: 10px;border-top-right-radius: 20px;border-bottom:1px solid white;">
+                                <input type="password" id="password" name="password" class="form-control txtInput" placeholder="Password" required style="border-bottom-left-radius: 10px;border-bottom-right-radius: 20px;">
+                                <p style="font-size: 12px;margin-top: 15px;margin-bottom: 17px;color:#8e8b8b;">
+                                    We’ll call or text you to confirm your number. Standard message and data rates apply.
+                                </p>
+                                <button class="btn btn-lg btn-block btn_sign" type="submit" style="border-radius: 10px;">Sign In</button>
+
+                                <h2 class="text-divider"><span>or</span></h2>
+                                <a href="#" class="btn btn-lg btn-block btn-social" style="border-radius: 10px;">
+                                    <span style="float: left;padding-top: 3px;">
+                                        <svg viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            role="presentation"
+                                            aria-hidden="true"
+                                            focusable="false"
+                                            style="height: 20px; width: 20px; display: block; fill: currentcolor;">
+                                            <defs>
+                                                <path id="a" d="M.001 0H24v23.854H.001z"></path>
+                                            </defs>
+                                            <g fill="none" fill-rule="evenodd">
+                                                <mask id="b" fill="#fff">
+                                                    <use xlink:href="#a"></use>
+                                                </mask>
+                                                <path d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854V15.47H7.078V12h3.047V9.356c0-3.007 1.792-4.668 4.533-4.668 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12" fill="#1877F2" mask="url(#b)"></path>
+                                                <path d="M16.671 15.469L17.203 12h-3.328V9.749c0-.949.465-1.874 1.956-1.874h1.513V4.922s-1.374-.234-2.686-.234c-2.741 0-4.533 1.66-4.533 4.668V12H7.078v3.469h3.047v8.385a12.09 12.09 0 003.75 0V15.47h2.796" fill="#FFF">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </span>
+
+                                    Continue with Facebook
+                                </a>
+                                <a href="#" class="btn btn-lg btn-block btn-social" style="border-radius: 10px;">
+                                    <span style="float: left;padding-top: 3px;">
+                                        <svg viewBox="0 0 18 18"
+                                             role="presentation"
+                                             aria-hidden="true"
+                                             focusable="false"
+                                             style="height: 20px; width: 20px; display: block;">
+                                            <g fill="none" fill-rule="evenodd">
+                                                <path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"></path>
+                                                <path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z" fill="#4285F4"></path>
+                                                <path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"></path>
+                                                <path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"></path>
+                                                <path d="M0 0h18v18H0V0z"></path>
+                                            </g>
+                                        </svg>
+                                    </span>
+
+                                    Continue with Google
+                                </a>
+                            </form>
+                        </div>
+                        <p style="padding-top: 20px;padding-bottom: 30px;">Don't have an account? <a href="#" data-toggle="modal" data-target="#signUpModal" class="text-center new-account">Continue</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SignUp Modal Part-->
+        <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content" style="border-radius: 20px;">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <span data-dismiss="modal" class="btn_close"><span class="lni lni-close"></span></span>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="modal-title"
+                                    id="myModalLabel"
+                                    style="text-align:center;
+                                            margin-top: -5px;
+                                            font-family: Circular,
+                                                -apple-system,
+                                                BlinkMacSystemFont,
+                                                Roboto,
+                                                Helvetica Neue,
+                                                sans-serif;
+                                            font-size: 18px;
+                                            font-weight: bold;">
+                                    Sign Up
+                                </h3>
+                            </div>
+                        </div>
+                        <hr style="margin-top: 5px;">
+                        <div class="account-wall">
+                            <form action="{% url 'register_user' %}" method="post" id="login-form">
+					            {% csrf_token %}
+                                <input type="email" id="username-input" name="email" class="form-control txtInput" placeholder="Email" required autofocus style="border-top-left-radius: 10px;border-top-right-radius: 20px;border-bottom:1px solid white;">
+                                <input type="password" id="password1" name="password1" class="form-control txtInput" placeholder="Password" required style="border-bottom-left-radius: 10px;border-bottom-right-radius: 20px;">
+                                <input type="password" id="password2" name="password2" class="form-control txtInput" placeholder="Re-type Password" required style="border-bottom-left-radius: 10px;border-bottom-right-radius: 20px;">
+                                <p style="font-size: 12px;margin-top: 15px;margin-bottom: 17px;color:#8e8b8b;">
+                                    We’ll call or text you to confirm your number. Standard message and data rates apply.
+                                </p>
+                                <button class="btn btn-lg btn-block btn_sign" type="submit" style="border-radius: 10px;">Sign Up</button>
+
+                                <h2 class="text-divider"><span>or</span></h2>
+                                <a href="#" class="btn btn-lg btn-block btn-social" style="border-radius: 10px;">
+                                    <span style="float: left;padding-top: 3px;">
+                                        <svg viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            role="presentation"
+                                            aria-hidden="true"
+                                            focusable="false"
+                                            style="height: 20px; width: 20px; display: block; fill: currentcolor;">
+                                            <defs>
+                                                <path id="a" d="M.001 0H24v23.854H.001z"></path>
+                                            </defs>
+                                            <g fill="none" fill-rule="evenodd">
+                                                <mask id="b" fill="#fff">
+                                                    <use xlink:href="#a"></use>
+                                                </mask>
+                                                <path d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854V15.47H7.078V12h3.047V9.356c0-3.007 1.792-4.668 4.533-4.668 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12" fill="#1877F2" mask="url(#b)"></path>
+                                                <path d="M16.671 15.469L17.203 12h-3.328V9.749c0-.949.465-1.874 1.956-1.874h1.513V4.922s-1.374-.234-2.686-.234c-2.741 0-4.533 1.66-4.533 4.668V12H7.078v3.469h3.047v8.385a12.09 12.09 0 003.75 0V15.47h2.796" fill="#FFF">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </span>
+
+                                    Continue with Facebook
+                                </a>
+                                <a href="#" class="btn btn-lg btn-block btn-social" style="border-radius: 10px;">
+                                    <span style="float: left;padding-top: 3px;">
+                                        <svg viewBox="0 0 18 18"
+                                             role="presentation"
+                                             aria-hidden="true"
+                                             focusable="false"
+                                             style="height: 20px; width: 20px; display: block;">
+                                            <g fill="none" fill-rule="evenodd">
+                                                <path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"></path>
+                                                <path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z" fill="#4285F4"></path>
+                                                <path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"></path>
+                                                <path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"></path>
+                                                <path d="M0 0h18v18H0V0z"></path>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    Continue with Google
+                                </a>
+                            </form>
+                        </div>
+                        <p style="padding-top: 20px;padding-bottom: 30px;">Allrady have an account? <a href="#" data-toggle="modal" data-target="#signInModal" class="text-center new-account">Continue</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/Newsletter-->
+
+    <!--Footer Section-->
+    <section>
+        <footer class="bg-dark-purple text-white" style="padding:-10px 0px;">
+            <div style= "background-color:#F8F9F9;font-weight:100px;"class="footer-main">
+                <div class="container">
+                    <div style= "color:#000000;font-weight: 100px;"class="row">
+                        <div class="col-lg-2 col-md-2">
+                            <h4 style="font-size:15px;padding-top:15px ;font-weight: bold;padding-bottom: 13px;">Quick Links</h4>
+                            <!--<hr class="deep-purple text-primary accent-2 mb-4 mt-0 d-inline-block mx-auto">-->
+                            <ul class="list-unstyled mb-0">
+                                <!--<li><a style= "color:#000000;" href="http://www.dreamer-donor.com/contact">Contact Us</a></li>-->
+                                <li><a style= "color:#000000;"href="{% url 'about' %}">About Us</a></li>
+                                <li><a style= "color:#000000;"href="{% url 'faqs' %}">FAQs</a></li>
+                                <li><a style= "color:#000000;"href="{% url 'terms_and_conditions' %}">Terms and Conditions</a></li>
+                                <!--<li><a href="#">Privacy Policy</a></li>-->
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 ">
+                            <h4 style="font-size:15px;padding-top:15px;font-weight: bold;padding-bottom: 13px;">Contact</h4>
+                            <a href="{% url 'contact' %}" style="color:black;font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;">dreamerdonor@gmail.com</a>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2"></div>
+                        <div class="col-lg-5 col-md-5 col-md-12 pull-right">
+                            <div class="sub-newsletter" style="font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;">
+                            <h3 class="mb-2"><i class="fa fa-paper-plane-o mr-2"></i>Subscribe To Our Newsletter</h3>
+                            <p class="mb-0" style="font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important; color:black;text-align=center">Subscribe Us To get notifications</p><br>
+                            </div>
+                            <div class="input-group sub-input mt-1">
+                                <input type="text" class="form-control input-lg " placeholder="Enter your Email" name="email">
+                                <div class="input-group-append ">
+                                    <button type="submit" class="btn btn-primary btn-lg br-tr-3  br-br-3" style="background-color:#ff385c;">
+                                        Subscribe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light text-dark p-0">
+                <div class="container" style="bac">
+                    <div class="row d-flex">
+                        <div class="col-lg-6 col-sm-6 mt-3 mb-3 text-align: left;" id="bottom-most" style="padding-top:15px ">
+                            Copyright © 2020 <a href="#" style="color:#000000" class="fs-14">www.dreamer-donor.com</a>.
+                            Developed by <a href="http://www.whitepaper.tech/" target="_blank" style="color:#010101" class="fs-14"><b>Xobotronix</b></a> All rights
+                            reserved.
+                        </div>
+                        <div class="col-lg-6 col-sm-6 mt-3 mb-3 text-align: right;" style="padding-left:250px">
+                            <ul class="list-unstyled list-inline mt-3";"text-align:right">
+                                <li class="list-inline-item" style="border-radius: 50%;background-color:#efefef;">
+                                    <a href="https://www.facebook.com/search/top?q=dreamer-donor" target="_blank" >
+                                        <svg viewBox="0 0 32 32" role="img" aria-hidden="false" aria-label="Navigate to Facebook" focusable="false" style="height: 14px;margin-top: 9px; width: 18px; display: block; fill: currentcolor;"><path d="m8 14.41v-4.17c0-.42.35-.81.77-.81h2.52v-2.08c0-4.84 2.48-7.31 7.42-7.35 1.65 0 3.22.21 4.69.64.46.14.63.42.6.88l-.56 4.06c-.04.18-.14.35-.32.53-.21.11-.42.18-.63.14-.88-.25-1.78-.35-2.8-.35-1.4 0-1.61.28-1.61 1.73v1.8h4.52c.42 0 .81.42.81.88l-.35 4.17c0 .42-.35.71-.77.71h-4.21v16c0 .42-.35.81-.77.81h-5.21c-.42 0-.8-.39-.8-.81v-16h-2.52a.78.78 0 0 1 -.78-.78" fill-rule="evenodd"></path></svg>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item" style="border-radius: 60%;background-color: #efefef; ">
+                                    <a href="https://twitter.com/DreamerDonor" target="_blank" style="padding-right: 3px;">
+                                        <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+
+                                    </a>
+                                </li>
+                                <li class="list-inline-item" style="border-radius: 50%;background-color:#efefef;">
+                                    <a href="https://www.linkedin.com/in/dreamer-donor-54a20a200" target="_blank" style="padding-right: 3px;">
+                                        <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item" style="border-radius: 50%;background-color:#efefef;">
+                                    <a href="https://instagram.com/dreamer_donor?igshid=1aj07h185dukd" target="_blank" style="padding-right: 3px;">
+                                        <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item" style="border-radius: 50%;background-color:#efefef;">
+                                    <a href="mailto:dreamerdonor@gmail.com" target="_blank" style="padding-right: 3px;">
+                                        <i class="fa fa-google fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item" style="border-radius: 50%;background-color:#efefef;">
+                                    <a href="javascript:void(0)" target="_blank" style="padding-right: 3px;">
+                                        <i class="fa fa-youtube-play fa-lg" aria-hidden="true"></i>
+
+                                    </a>
+                                </li>
+
+                                <li class="list-inline-item" data-toggle="tooltip" title="chat with us for live support" style="padding-left:100px">
+                                    <a class="btn-floating btn-sm rgba-white-slight mx-1 waves-effect waves-light" href="#"  data-toggle="modal" data-target="#supportModal">
+                                        <img src="{% static '/support.png' %}" style="border:none;">
+
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+    <style>
+
+        .tagType li:hover{
+            background-color: #ec1f27;
+            cursor: pointer;
+            color: white;
+        }
+        .nav_active{
+            background-color:#4a4747 !important;
+
+        }
+        /*Auto complete*/
+        .autocomplete {
+          position: relative;
+          display: inline-block;
+        }
+
+        input {
+          border: 1px solid transparent;
+          background-color: #f1f1f1;
+          padding: 10px;
+          font-size: 16px;
+        }
+
+        input[type=text] {
+          background-color: #f1f1f1;
+          width: 100%;
+        }
+
+        input[type=submit] {
+          background-color: DodgerBlue;
+          color: #fff;
+          cursor: pointer;
+        }
+
+        .autocomplete-items {
+          position: absolute;
+          border: 1px solid #d4d4d4;
+          border-bottom: none;
+          border-top: none;
+          z-index: 99;
+          /*position the autocomplete items to be the same width as the container:*/
+          top: 100%;
+          left: 0;
+          right: 0;
+        }
+
+        .autocomplete-items div {
+          padding: 10px;
+          cursor: pointer;
+          background-color: #fff;
+          border-bottom: 1px solid #d4d4d4;
+        }
+
+        /*when hovering an item:*/
+        .autocomplete-items div:hover {
+          background-color: #e9e9e9;
+        }
+
+        /*when navigating through the items using the arrow keys:*/
+        .autocomplete-active {
+          background-color: DodgerBlue !important;
+          color: #ffffff;
+        }
+        .autocomplete-items{
+            max-height:200px;
+            overflow-y : scroll;
+        }
+        #myInputautocomplete-list{
+            text-align:left !important;
+        }
+        #myInputautocomplete-list strong{
+            /*color:#ec1f27;*/
+            border-bottom:2px solid green;
+        }
+    </style>
+    <script src="{% static 'search/js/extention/choices.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static "plugins/bootstrap-4.3.1-dist/js/popper.min.js" %}"></script>
+    <script src="{% static "plugins/bootstrap-4.3.1-dist/js/bootstrap.min.js" %}"></script>
+
+    <!--JQuery Sparkline Js-->
+    <script src="{% static "js/vendors/jquery.sparkline.min.js" %}"></script>
+
+    <!-- Circle Progress Js-->
+    <script src="{% static "js/vendors/circle-progress.min.js" %}"></script>
+
+    <!-- Star Rating Js-->
+    <script src="{% static "plugins/rating/jquery.rating-stars.js" %}"></script>
+
+    <!--Counters -->
+    <script src="{% static "plugins/counters/counterup.min.js" %}"></script>
+    <script src="{% static "plugins/counters/waypoints.min.js" %}"></script>
+    <script src="{% static "plugins/counters/numeric-counter.js" %}"></script>
+
+    <!--Owl Carousel js -->
+    <script src="{% static "plugins/owl-carousel/owl.carousel.js" %}"></script>
+
+    <!--Horizontal Menu-->
+    <script src="{% static "plugins/horizontal-menu/horizontal.js" %}"></script>
+
+    <!--JQuery TouchSwipe js-->
+    <script src="{% static "js/jquery.touchSwipe.min.js" %}"></script>
+
+    <!--Select2 js -->
+    <script src="{% static "plugins/select2/select2.full.min.js" %}"></script>
+    <script src="{% static "js/select2.js" %}"></script>
+
+    <!-- sticky Js-->
+    <script src="{% static "js/sticky.js" %}"></script>
+
+    <!-- Cookie js -->
+    <!--<script src="{% static "plugins/cookie/jquery.ihavecookies.js" %}"></script>-->
+    <!--<script src="{% static "plugins/cookie/cookie.js" %}"></script>-->
+
+    <!-- Custom scroll bar Js-->
+    <script src="{% static "plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js" %}"></script>
+
+    <!--Showmore Js-->
+    <!--<script src="{% static "js/jquery.showmore.js" %}"></script>-->
+    <!--<script src="{% static "js/showmore.js" %}"></script>-->
+
+    <!-- Swipe Js-->
+    <script src="{% static "js/swipe.js" %}"></script>
+
+    <!-- Scripts Js-->
+    <script src="{% static "js/owl-carousel.js" %}"></script>
+
+    <!-- Custom Js-->
+    <script src="{% static "js/custom.js" %}"></script>
+    <script>
+        var x = document.documentElement.clientWidth;
+        console.log(x)
+        if (x > 1000) {
+            $('.btn-float').hide();
+          }else {
+            $('.btn-float').show();
+            $('#back-to-top').remove();
+          }
+
+        $(document).ready(function(){
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            });
+        });
+    </script>
+    <script>
+        var countries = [];
+        function autocomplete(inp, arr) {
+            var currentFocus;
+            inp.addEventListener("input", function(e) {
+                var a, b, i, val = this.value;
+                closeAllLists();
+                if (!val) { return false;}
+                currentFocus = -1;
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                this.parentNode.appendChild(a);
+                for (i = 0; i < arr.length; i++) {
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                    b = document.createElement("DIV");
+                    b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                    b.innerHTML += arr[i].substr(val.length);
+                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                    b.addEventListener("click", function(e) {
+                        inp.value = this.getElementsByTagName("input")[0].value;
+                        closeAllLists();
+                    });
+                    a.appendChild(b);
+                }
+              }
+            });
+            inp.addEventListener("keydown", function(e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    currentFocus++;
+                    addActive(x);
+                }else if (e.keyCode == 38) {
+                    currentFocus--;
+                    addActive(x);
+                }else if (e.keyCode == 13) {
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                      if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                if (!x) return false;
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                for (var i = 0; i < x.length; i++) {
+                  x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                  if (elmnt != x[i] && elmnt != inp) {
+                    x[i].parentNode.removeChild(x[i]);
+                  }
+                }
+            }
+            document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+            });
+        }
+
+        $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+        $.ajax({
+            url: '/all_locations/',
+            method: 'get',
+
+            success: function(result){
+                console.log(result)
+                for ( var i = 0, l = result.length; i < l; i++ ) {
+                    countries.push(result[i].country)
+                }
+                // console.log(countries)
+
+            }
+        });
+
+
+        autocomplete(document.getElementById("dreamerIdea"), countries);
+        autocomplete(document.getElementById("donorUser"), countries);
+    </script>
+    <!-- CKEditor -->
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+</body>
+</html>

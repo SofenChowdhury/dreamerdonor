@@ -1,0 +1,36 @@
+{% extends "frontend/layout/inner_layout.html" %}
+{% block contents %}
+
+    <!-- Section -->
+    <section class="sptb bg-white">
+        <div class="container">
+            <div class="row" style="margin-top: 60px;">
+                {% for terms in terms_condition %}
+                <div class="text-justify col-lg-8 col-md-8"  style="font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;">
+                    <h2 class="mb-4 ">{{terms.title}}</h2>
+                    <p class="leading-normal">{{ terms.description }}
+                    </p>
+                </div>
+                {% endfor %}
+                <div class="col-lg-4 col-md-4">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/Section -->
+
+
+    <script type="text/javascript">
+        setTimeout(function(){
+            if($('#msg').length > 0){
+                $('#msg').remove();
+            }
+        }, 3000)
+    </script>
+    <!--/Contact-->
+{% endblock %}
+{% block js %}
+
+{% endblock %}

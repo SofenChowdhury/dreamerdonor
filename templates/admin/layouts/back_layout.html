@@ -1,0 +1,304 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Meta data -->
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+
+		<!-- Favicon -->
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+		<!-- Title -->
+		<title>Dreamer & Donor</title>
+		<link rel="stylesheet" href="{% static 'fonts/fonts/font-awesome.min.css' %}">
+
+		<!-- Bootstrap Css -->
+		<link href="{% static 'plugins/bootstrap-4.3.1-dist/css/bootstrap.min.css' %}" rel="stylesheet" />
+
+		<!-- Dashboard Css -->
+		<link href="{% static 'css/style.css' %}" rel="stylesheet" />
+		<link href="{% static 'css/admin-custom.css' %}" rel="stylesheet" />
+
+		<!-- Sidemenu Css -->
+		<link href="{% static 'plugins/toggle-sidebar/sidemenu.css' %}" rel="stylesheet" />
+
+		<!-- Custom scroll bar css-->
+		<link href="{% static 'plugins/scroll-bar/jquery.mCustomScrollbar.css' %}" rel="stylesheet" />
+
+		<!---Font icons-->
+		<link href="{% static 'css/icons.css' %}" rel="stylesheet"/>
+		<link href="{% static 'plugins/iconfonts/icons.css' %}" rel="stylesheet" />
+		<link rel="stylesheet" href="{% static 'fonts/fonts/font-awesome.min.css' %}">
+
+		{% block css %}
+		{% endblock %}
+
+	</head>
+
+	<body class="app sidebar-mini">
+		<!--Loader-->
+		<div id="global-loader">
+			<img src="{% static 'images/loader.svg' %}" class="loader-img" alt="">
+		</div>
+		<!--/Loader-->
+
+		<!--Page-->
+		<div class="page">
+			<div class="page-main">
+				<!--App-Header-->
+				<div class="app-header1 header py-1 d-flex">
+					<div class="container-fluid">
+						<div class="d-flex">
+							<a class="header-brand" href="{% url 'backend' %}">
+								<!--<img src="{% static '/images/brand/101.png' %}" class="header-brand-img" alt="Reallist logo">-->
+								Dream & Donor
+							</a>
+							<a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-toggle="sidebar" href="#"></a>
+							<div class="header-navicon">
+								<a href="#" data-toggle="search" class="nav-link d-lg-none navsearch-icon">
+									<i class="fa fa-search"></i>
+								</a>
+							</div>
+							<!-- <div class="header-navsearch">
+								<a href="#" class=" "></a>
+								<form class="form-inline mr-auto">
+									<div class="nav-search">
+										<input type="search" class="form-control header-search" placeholder="Search…" aria-label="Search" >
+										<button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+									</div>
+								</form>
+							</div> -->
+							<div class="d-flex order-lg-2 ml-auto">
+								<div class="dropdown d-none d-md-flex" >
+									<a  class="nav-link icon full-screen-link">
+										<i class="fe fe-maximize-2" id="fullscreen-button"></i>
+									</a>
+								</div>
+								<div class="dropdown d-none d-md-flex country-selector">
+
+								</div>
+
+								<!-- Notifications  -->
+								<div class="dropdown d-none d-md-flex">
+									<a class="nav-link icon" data-toggle="dropdown">
+										<i class="fa fa-bell-o"></i>
+										<span class=" nav-unread badge badge-danger  badge-pill">count_my_notification}}</span>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+										<a href="#" class="dropdown-item text-center">You have count_my_notification}} notification</a>
+
+										<!--{% for notification in my_notification %}-->
+										<!--{% if notification.seen_at %}-->
+										<!--<div class="dropdown-divider"></div>-->
+										<!--<a href="/backend/notifications/notification_details/{{notification.id}}" class="dropdown-item d-flex pb-3" style="background-color:whitesmoke;">-->
+										<!--	<div class="notifyimg">-->
+										<!--		<i class="fa fa-envelope-o"></i>-->
+										<!--	</div>-->
+										<!--	<div>-->
+										<!--		<strong>{{notification.notify_for.Property_title}}</strong>-->
+										<!--		<p style="font-size: 10px;">{{notification.notify_message}}</p>-->
+										<!--		<div class="small text-muted">{{notification.notify_time}}</div>-->
+										<!--	</div>-->
+										<!--</a>-->
+										<!--{% else %}-->
+										<!--<div class="dropdown-divider"></div>-->
+										<!--<a href="/backend/notifications/notification_details/{{notification.id}}" class="dropdown-item d-flex pb-3">-->
+										<!--	<div class="notifyimg">-->
+										<!--		<i class="fa fa-envelope-o"></i>-->
+										<!--	</div>-->
+										<!--	<div>-->
+										<!--		<strong>{{notification.notify_for.Property_title}}</strong>-->
+										<!--		<p style="font-size: 10px;">{{notification.notify_message}}</p>-->
+										<!--		<div class="small text-muted">{{notification.notify_time}}</div>-->
+										<!--	</div>-->
+										<!--</a>-->
+										<!--{% endif %}-->
+										<!--{% endfor %}-->
+
+										<div class="dropdown-divider"></div>
+										<a href="#" class="dropdown-item text-center">See all Notification</a>
+									</div>
+								</div>
+
+								<div class="dropdown ">
+								    {% if get_userinfo.image %}
+									<a href="#" class="nav-link pr-0 leading-none user-img" data-toggle="dropdown">
+										<img src="/{{get_userinfo.image}}" alt="profile-img" class="avatar avatar-md brround">
+									</a>
+									{% else %}
+        							<div>
+                                        <a href="#" class="nav-link pr-0 leading-none user-img" data-toggle="dropdown">
+    										<img src="{% static 'images/faces/male/41.jpg' %}" alt="profile-img" class="avatar avatar-md brround">
+    									</a>
+        							</div>
+        							{% endif %}
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow ">
+										<a class="dropdown-item" href="url 'dashboard' %}">
+											<i class="dropdown-icon icon icon-user"></i> My Profile
+										</a>
+										<a class="dropdown-item" href="#">
+											<i class="dropdown-icon icon icon-speech"></i> Inbox
+										</a>
+										<a class="dropdown-item" href="/admin/logout?next=/">
+											<i class="dropdown-icon icon icon-power"></i> Log out
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--/App-Header-->
+
+				<!-- Sidebar menu-->
+				<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+				<aside class="app-sidebar doc-sidebar">
+					<div class="app-sidebar__user clearfix">
+						<div class="dropdown user-pro-body">
+						    {% if get_userinfo.image %}
+							<div>
+								<img src="/{{get_userinfo.image}}" class="avatar avatar-lg brround">
+								<a href=" url 'dashboard' %}" class="profile-img">
+									<span class="fa fa-pencil" aria-hidden="true"></span>
+								</a>
+							</div>
+							{% else %}
+							<div>
+
+								<img src="{% static 'images/faces/male/41.jpg' %}" class="avatar avatar-lg brround">
+								<a href=" url 'dashboard' %}" class="profile-img">
+									<span class="fa fa-pencil" aria-hidden="true"></span>
+								</a>
+							</div>
+							{% endif %}
+							<div class="user-info">
+								<h2>{{current_user.username}}</h2>
+								<span>{{current_user.email}}</span>
+							</div>
+						</div>
+					</div>
+					<ul class="side-menu">
+                        <li class="slide ">
+							<a class="side-menu__item" href="{% url 'backend' %}">
+							    <i class="side-menu__icon fa fa-tachometer"></i><span class="side-menu__label">Dashboard</span>
+							 </a>
+						</li>
+
+						<li class="slide {% if request.resolver_match.url_name == "idea" %}is-expanded{% endif %}">
+							<a class="side-menu__item" data-toggle="slide" href="#">
+							    <i class="side-menu__icon fa fa-building-o"></i><span class="side-menu__label">Idea</span>
+							    <i class="angle fa fa-angle-right"></i></a>
+							<ul class="slide-menu">
+								<li><a class="slide-item" href="{% url 'admin_idea' %}">Idea List</a></li>
+							</ul>
+						</li>
+						<li class="slide {% if request.resolver_match.url_name == "user" %}is-expanded{% endif %}">
+							<a class="side-menu__item" data-toggle="slide" href="#">
+							    <i class="side-menu__icon fa fa-building-o"></i><span class="side-menu__label">Users</span>
+							    <i class="angle fa fa-angle-right"></i></a>
+							<ul class="slide-menu">
+								<li><a class="slide-item" href="{% url 'admin_user' %}">User List</a></li>
+							</ul>
+						</li>
+
+					</ul>
+					<div class="app-sidebar-footer">
+						<a data-toggle="tooltip" href="{% url 'home' %}" title="Website">
+							<span class="fa fa-globe" aria-hidden="true"></span>
+						</a>
+						<a data-toggle="tooltip" href=" url 'dashboard' %}" title="Dashboard">
+							<span class="fa fa-user" aria-hidden="true"></span>
+						</a>
+						<a data-toggle="tooltip" href="/admin/logout?next=/" title="Logout">
+							<span class="fa fa-sign-in" aria-hidden="true"></span>
+						</a>
+					</div>
+				</aside>
+				<!-- /Sidebar menu-->
+
+				<!--App-Content-->
+				<div class="app-content  my-3 my-md-5">
+					<div class="side-app">
+
+						<!-- Page-Header-->
+						<div class="page-header">
+							<h4 class="page-title">Dashboard</h4>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+								<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+								<li class="breadcrumb-item"><a href="{% url 'home' %}">Website</a></li>
+							</ol>
+						</div>
+						<!-- /Page-Header-->
+
+						{% block contants %}
+						{% endblock %}
+					</div>
+				</div>
+			</div>
+
+			<!--Footer-->
+			<footer class="footer">
+				<div class="container">
+					<div class="row align-items-center text-center" style="margin-left:40%;">
+						Copyright © 2020 <a href="#" class="fs-14 text-primary">DreamerDonor-(V.001)</a>.
+						Developed by <a href="#" class="fs-14 text-primary">WhitePaper</a>
+						All rights reserved.
+					</div>
+				</div>
+			</footer>
+			<!-- / Footer-->
+
+		</div>
+
+		<!-- Back to top -->
+		<a href="#top" id="back-to-top" ><i class="fa fa-rocket"></i></a>
+        <script>
+            $(document).ready(function(){
+              $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+		<!-- JQuery js-->
+		<script src="{% static 'js/vendors/jquery-3.2.1.min.js' %}"></script>
+
+		<!-- Bootstrap js -->
+		<script src="{% static 'plugins/bootstrap-4.3.1-dist/js/popper.min.js' %}"></script>
+		<script src="{% static 'plugins/bootstrap-4.3.1-dist/js/bootstrap.min.js' %}"></script>
+
+		<!--JQuery Sparkline Js-->
+		<script src="{% static 'js/vendors/jquery.sparkline.min.js' %}"></script>
+
+		<!-- Circle Progress Js-->
+		<script src="{% static 'js/vendors/circle-progress.min.js' %}"></script>
+
+		<!-- Star Rating Js-->
+		<script src="{% static 'plugins/rating/jquery.rating-stars.js' %}"></script>
+
+		<!--Counters -->
+		<script src="{% static 'plugins/counters/counterup.min.js' %}"></script>
+		<script src="{% static 'plugins/counters/waypoints.min.js' %}"></script>
+
+		<!-- Fullside-menu Js-->
+		<script src="{% static 'plugins/toggle-sidebar/sidemenu.js' %}"></script>
+
+		<!-- CHARTJS CHART -->
+		<script src="{% static 'plugins/chart/Chart.bundle.js' %}"></script>
+		<script src="{% static 'plugins/chart/utils.js' %}"></script>
+
+		<!-- Custom scroll bar Js-->
+		<script src="{% static 'plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+
+		<!-- ECharts Plugin -->
+		<script src="{% static 'plugins/echarts/echarts.js' %}"></script>
+		<script src="{% static 'plugins/echarts/echarts.js' %}"></script>
+		<script src="{% static 'js/index1.js' %}"></script>
+
+		<!-- Custom Js-->
+		<script src="{% static 'js/admin-custom.js' %}"></script>
+		{% block js %}
+		{% endblock %}
+
+	</body>
+</html>

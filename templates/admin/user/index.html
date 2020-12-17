@@ -1,0 +1,80 @@
+{% extends 'admin/layouts/back_layout.html' %}
+{% block contants %}
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+    .green{
+        background-color:green;
+        color:white;
+    }
+    .tomato{
+        background-color:tomato;
+        color:white;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">{{title}}</div>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table id="example" class="table table-striped table-bordered" >
+						<thead>
+							<tr>
+								<th class="wd-15p">#SL</th>
+								<th class="wd-15p">ID</th>
+								<th class="wd-20p">Image</th>
+								<th class="wd-15p">User Name</th>
+								<th class="wd-15p">Email</th>
+								<th class="wd-15p">Phone</th>
+								<th class="wd-25p">Role</th>
+								<th class="wd-25p">Joing Date</th>
+								<th class="wd-25p">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for user in get_user %}
+							<tr>
+								<td>{{forloop.counter}}</td>
+								<td>#{{user.id}}</td>
+								<td style="width:15%;"><img src="/{{user.image}}"></td>
+								<td><a href="#">{{user.user_id.username}}</a></td>
+								<td><a href="#">{{user.user_id.email}}</a></td>
+								<td>{{user.phone}}</td>
+								{% if user.role == 'Dreamer' %}
+								<td class="green">{{user.role}}</td>
+								{% else %}
+								<td class="tomato">{{user.role}}</td>
+								{% endif %}
+								<td>{{user.join_date}}</td>
+								<td>
+									<!--<span class="btn btn-info" style="font-size: 10px;padding:0px;"><a href="properties/property_details/{{user.id}}" style="color: white;"> view </a></span>-->
+									<span class="btn btn-success" style="font-size: 10px;padding:0px;"><a href="user_edit/{{user.id}}" style="color: white;">Edit</a></span>
+									<span class="btn btn-danger" style="font-size: 10px;padding:0px;"><a href="/user/delete/{{user.id}}" style="color: white;" onclick="return confirm('Are you sure you want to delete this?');">Delete</a></span>
+								</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- table-wrapper -->
+		</div>
+		<!-- section-wrapper -->
+	</div>
+</div>
+{% endblock %}
+{% block css %}
+<link href="{% static 'plugins/datatable/dataTables.bootstrap4.min.css' %}" rel="stylesheet" />
+<link href="{% static 'plugins/datatable/jquery.dataTables.min.css' %}" rel="stylesheet" />
+{% endblock %}
+{% block js %}
+<!-- Data tables -->
+<script src="{% static 'plugins/datatable/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatable/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/datatable.js' %}"></script>
+<!-- Custom Js-->
+<script src="{% static 'js/admin-custom.js' %}"></script>
+{% endblock %}

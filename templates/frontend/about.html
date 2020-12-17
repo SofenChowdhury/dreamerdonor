@@ -1,0 +1,53 @@
+{% extends "frontend/layout/inner_layout.html" %}
+{% block contents %}
+
+    <!-- Section -->
+<section>
+    <div class="cover-image sptb bg-background-color" data-image-src="https://www.healthiercover.com/images/contact.jpg">
+        <div class="content-text mb-0">
+            <div class="container">
+                <div class="text-center text-white mt-7">
+                    <h2 class="mb-2 display-5">Are you ready for the posting you ads on this Site?</h2>
+                    <p>It is a long established fact that a reader will be distracted by the readable content of a page
+                        when looking at its layout.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/section-->
+
+<!--section-->
+ <section class="sptb" style="background-color:white;margin-top:7px;">
+        <div class="container">
+            <div class="row">
+                <div class="text-justify col-lg-8 col-md-8">
+                    <h2 class="mb-4 ">{{about_us.title}}</h2>
+                    <h4 class="leading-normal"></h4>
+                    <p class="leading-normal">{{about_us.description}}</p>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="product-filter-desc">
+                        <div class="product-filter-icons text-center">
+                            <img src="{{about_us.image}}" alt="img" class="cover-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/Section -->
+
+
+    <script type="text/javascript">
+        setTimeout(function(){
+            if($('#msg').length > 0){
+                $('#msg').remove();
+            }
+        }, 3000)
+    </script>
+    <!--/Contact-->
+{% endblock %}
+{% block js %}
+
+{% endblock %}

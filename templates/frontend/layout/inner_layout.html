@@ -1,0 +1,680 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+
+    <!-- Title -->
+    <title>Dreamer Donor</title>
+    <!-- ManyChat -->
+    <script src="//widget.manychat.com/101903607952219.js" async="async"></script>
+    <!-- Bootstrap Css -->
+    <link href="{% static "plugins/bootstrap-4.3.1-dist/css/bootstrap.min.css" %}" rel="stylesheet"/>
+
+    <!-- Style css -->
+    <link href="{% static "css/style.css" %}" rel="stylesheet"/>
+
+    <!-- Font-awesome  Css -->
+    <link href="{% static "css/icons.css" %}" rel="stylesheet"/>
+
+    <!--Horizontal Menu-->
+    <link href="{% static "plugins/horizontal-menu/horizontal.css" %}" rel="stylesheet"/>
+
+    <!--Select2 Plugin -->
+    <link href="{% static "plugins/select2/select2.min.css" %}" rel="stylesheet"/>
+
+    <!-- Cookie css -->
+    <!--<link href="{% static "plugins/cookie/cookie.css" %}" rel="stylesheet">-->
+
+    <!-- Owl Theme css-->
+    <link href="{% static "plugins/owl-carousel/owl.carousel.css" %}" rel="stylesheet"/>
+
+    <!-- Custom scroll bar css-->
+    <link href="{% static "plugins/scroll-bar/jquery.mCustomScrollbar.css" %}" rel="stylesheet"/>
+
+    <!-- Color skin-->
+
+
+    <!--<link id="theme" rel="stylesheet" type="text/css" media="all" href="{% static "skins/color-skins/color15.css" %}"/>-->
+    <link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+
+
+    <style>
+        .btn-primary{
+            background-color:#ec1f27 !important;
+        }
+        .footer-main{
+            padding-top:1rem !important;
+            padding-bottom:1rem !important;
+        }
+        .btn-circle {
+          width: 30px;
+          height: 30px;
+          text-align: center;
+          padding: 6px 0;
+          font-size: 12px;
+          line-height: 1.428571429;
+          border-radius: 15px;
+        }
+        .btn-circle.btn-lg {
+          width: 50px;
+          height: 50px;
+          padding: 10px 16px;
+          font-size: 18px;
+          line-height: 1.33;
+          border-radius: 25px;
+        }
+        .btn-circle.btn-xl  {
+          width: 56px;
+          height: 56px;
+          padding: 10px 16px;
+          font-size: 24px;
+          line-height: 1.33;
+          border-radius: 35px;
+          margin-right:19px;
+          border:40px;
+        }
+        .horizontalMenu>.horizontalMenu-list>li>a.active{
+            border-bottom: 2px solid #3b3b3b;
+            padding: 10px 0px !important;
+            margin-right:10px;
+        }
+        .btn-float{
+            position: fixed;
+            right: 5px;
+            bottom:100px;
+        }
+
+        .btn-lateral{
+            background-color: #008ECF;
+            color: white;
+            margin: 10px;
+        }
+
+        .btn-filter
+        {
+            background-color: #283896;
+            color: #FFF;
+        }
+        .horizontalMenu-list li a{
+            color:gray;
+        }
+        .active a{
+            color:tomato !important;
+        }
+        @media only screen and (max-width:950px){
+            .post_idea{
+                width:100% !important;
+            }
+            .horizontalMenu-list li a{
+                /*color:white !important;*/
+                padding-left:10px !important;
+            }
+            .horizontalMenu>.horizontalMenu-list>li>a.active{
+                background-color:red !important;
+                color:white !important;
+                padding: 10px 10px !important;
+                border-bottom: none !important;
+                width: 100%;
+            }
+            .horizontalMenu>.horizontalMenu-list>li:hover a{
+                padding: 10px 10px !important;
+                background-color:red !important;
+                color:white !important;
+            }
+            .horizontalMenu>.horizontalMenu-list>li:hover .dropdown-item{
+                background-color:transparent !important;
+                color:red !important;
+            }
+        }
+        @media only screen and (max-width: 991px){
+            .post_idea{
+                width:100% !important;
+            }
+            .horizontalMenu>.horizontalMenu-list>li>a.active {
+                background-color:red !important;
+                color:white !important;
+                padding: 10px 10px !important;
+                border-bottom: none !important;
+                width: 100%;
+            }
+            .horizontalMenu>.horizontalMenu-list>li:hover a{
+                padding: 10px 10px !important;
+                background-color:red !important;
+                color:white !important;
+            }
+            .horizontalMenu>.horizontalMenu-list>li:hover .dropdown-item{
+                background-color:transparent !important;
+                color:red !important;
+            }
+        }
+        @media only screen and (max-width: 765px){
+            .post_idea{
+                width:100% !important;
+            }
+            .horizontalMenu>.horizontalMenu-list>li>a.active {
+                background-color:red !important;
+                color:white !important;
+                padding: 10px 10px !important;
+                border-bottom: none !important;
+                width: 100%;
+            }
+            .horizontalMenu>.horizontalMenu-list>li:hover a{
+                padding: 10px 10px !important;
+                background-color:red !important;
+                color:white !important;
+            }
+            .horizontalMenu>.horizontalMenu-list>li:hover .dropdown-item{
+                background-color:transparent !important;
+                color:red !important;
+            }
+        }
+
+    </style>
+    {% block css %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+<!--Loader-->
+<!--<div id="global-loader">-->
+<!--    <img src="{% static "images/loader.svg" %}" class="loader-img" alt="">-->
+<!--</div>-->
+
+<!--Topbar-->
+<div class="header-main">
+   <!-- Header -->
+    <div class="horizontal-header clearfix ">
+        <div class="container">
+            <a id="horizontal-navtoggle" class="animated-arrow"><span></span></a>
+            <!--<span class="smllogo"><img src="{% static '/images/brand/101.png' %}" width="120" alt="" style="padding: 5px 0px 10px 0px"/></span>-->
+            <a href="{% url 'home' %}">
+                <span class="smllogo">
+                    <h3> Dreamer & Donor </h3>
+                    <!--<img src="/assets/uploads/Idea/dd logo edited.jpg" style="border-radius: 5px;height: 45px;width: 150px;padding-bottom: 10px">-->
+                </span>
+            </a>
+            <!--<a href="tel:8801880088226" class="callusbtn"><i class="fa fa-phone" aria-hidden="true"></i></a>-->
+        </div>
+    </div>
+    <!-- /Header -->
+
+    <!-- Horizontal-menu -->
+    <div class="horizontal-main  bg-dark-transparent clearfix" id="horizontal-main" style="">
+        <div  style="background-color: white;">
+        <div class="horizontal-mainwrapper container clearfix">
+            <div style="margin-left: 0;padding-top:20px;" class="desktoplogo">
+                <a href="{% url 'home' %}">
+                    <h2 style="font-weight:bold;"><span style="font-size:26px;color:#df1820">Dreamer & Donor</span> <span style="font-size:26px;color:white">Donor</span></h2>
+                    <!--<img src="/assets/uploads/Idea/dd logo edited.jpg" style="border-radius: 5px;height: 60px;width: 150px;padding-bottom: 10px">-->
+                </a>
+            </div>
+            <div style="margin-left:0;padding: 0.25rem 0;padding-top:20px;" class="desktoplogo-1">
+                <a href="{% url 'home' %}">
+                    <h2 style="font-weight:bold;"><span style="color:#df1820;font-size:26px;">Dreamer & Donor</span> <span style="color:white;">Donor</span></h2>
+                    <!--<img src="/assets/uploads/Idea/dd logo edited.jpg" style="border-radius: 5px;height: 60px;width: 150px;padding-bottom: 10px">-->
+                </a>
+            </div>
+            <!--Nav-->
+            <nav class="horizontalMenu clearfix d-md-flex">
+                <ul class="horizontalMenu-list">
+                    <li aria-haspopup="true" class=""><a href="{% url 'home' %}" style="font-weight: bold;font-size: 14px;color:#0a545b">Home </a></li>
+                    <li aria-haspopup="true"><a href="{% url 'idea_list' %}" style="font-weight: bold;font-size: 14px;color:#0a545b">Ideas</a></li>
+                    <li aria-haspopup="true"><a href="{% url 'about' %}" style="font-weight: bold;font-size: 14px;color:#0a545b">About Us </a></li>
+                    <li aria-haspopup="true"><a href="{% url 'contact' %}" style="font-weight: bold;font-size: 14px;color:#0a545b"> Contact Us </a></li>
+                    {% if request.user.is_authenticated %}
+                    <li aria-haspopup="true" class="mt-5 mt-lg-0">
+                        <span>
+                            <a class="btn post_idea" style="border: 2px solid #e1e1e1;color:#0a545b !important;font-size: 14px;border-radius: 50px;" href="{% url 'post_idea' %}" style="font-weight: bold;">
+                                Post Idea
+                            </a>
+                        </span>
+                    </li>
+                    {% else %}
+                    <li aria-haspopup="true" class="mt-5 mt-lg-0">
+                        <span>
+                            <a class="btn post_idea" data-toggle="modal" data-target="#signInModal" style="border: 2px solid #e1e1e1;color:#0a545b !important;font-size: 14px;border-radius: 50px;" href="#" style="font-weight: bold;">
+                                Post Idea
+                            </a>
+                        </span>
+                    </li>
+                    {% endif %}
+                    <style>
+                        .btn_login:hover{
+                            background-color:white !important;
+                        }
+                        .btn_login:hover i{
+                            background-color:white !important;
+                            color:gray !important;
+                        }
+                        ul li:hover a{
+                            background-color:white !important;
+                        }
+                        ul li:hover a i{
+                            background-color:white !important;
+                            color:gray !important;
+                        }
+                        ul li:hover a span{
+                            background-color:white !important;
+                            color:gray !important;
+                        }
+                    </style>
+                    <li class="dropdown">
+                        <a href="#" class="btn_login" data-toggle="dropdown" style="border-radius: 50px;background-color: white;box-shadow: 0 0 2px 1px #c4c4c4;">
+                            <i class="fa fa-bars mr-1" style="color:gray !important;"></i>
+                            <span class="fa fa-user-circle-o" style="color:gray !important;"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'dashboard' %}" class="dropdown-item" >
+                                <i class="dropdown-icon icon icon-user"></i> My Panel
+                            </a>
+                            <a class="dropdown-item" href="/admin/logout?next=/">
+                                <i class="dropdown-icon icon icon-power"></i> Log out
+                            </a>
+                            {% else %}
+                            <!--<a href="{% url 'register' %}" class="dropdown-item" >-->
+                            <!--    <i class="dropdown-icon icon icon-user"></i> Sign Up-->
+                            <!--</a>-->
+                            <a href="#" data-toggle="modal" data-target="#signUpModal" class="dropdown-item"  style="color:gray !important;">
+                                <i class="dropdown-icon icon icon-user"></i> Sign Up
+                            </a>
+                            <a href="#" data-toggle="modal" data-target="#signInModal" class="dropdown-item"  style="color:gray !important;">
+                                <i class="dropdown-icon icon icon-key"></i> Sign In
+                            </a>
+                            {% endif %}
+                            <a class="dropdown-item" href="{% url 'contact' %}">
+                                <i class="dropdown-icon fa fa-volume-control-phone"></i> Help
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <!--Nav-->
+        </div>
+        </div>
+    </div>
+</div>
+<!--/Horizontal-main -->
+{% block contents %}
+{% endblock %}
+<style>
+    .btn_close{
+        background-color:white;
+        padding: 5px 9px;
+        border-radius: 50px;
+        cursor:pointer;
+    }
+    .btn_close:hover{
+        background-color:#faf7f7;
+        padding: 5px 9px;
+        border-radius: 50px;
+        cursor:pointer;
+    }
+    .btn_sign{
+        background: linear-gradient(to right, rgb(230, 30, 77) 0%,
+                    rgb(227, 28, 95) 50%,
+                    rgb(215, 4, 102) 100%) !important;
+        color:white;
+    }
+    .txtInput{
+        height: 56px;
+        border: 1px solid darkgrey;
+    }
+</style>
+<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content" style="border-radius: 20px;">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <span data-dismiss="modal" class="btn_close"><span class="lni lni-close"></span></span>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="modal-title"
+                            id="myModalLabel"
+                            style="text-align:center;
+                                     margin-top: -5px;
+                                     font-family: Circular,
+                                        -apple-system,
+                                        BlinkMacSystemFont,
+                                        Roboto,
+                                        Helvetica Neue,
+                                        sans-serif;
+                                    font-size: 18px;
+                                    font-weight: bold;">
+                            Sign In
+                        </h3>
+                    </div>
+                </div>
+                <style>
+                    .text-divider{margin: 2em 0; line-height: 0; text-align: center;}
+                    .text-divider span{background-color: #ffffff; padding: 1em;}
+                    .text-divider:before{ content: " "; display: block; border-top: 1px solid #e3e3e3; border-bottom: 1px solid #f7f7f7;}
+                    .btn-social{
+                        border: 2px solid lightgray;
+                    }
+                    .btn-social:hover{
+                        border:2px solid black;
+                    }
+                </style>
+                <hr style="margin-top: 15px;">
+                <div class="account-wall">
+                    <form action="{% url 'login' %}" method="post" id="login-form">
+			            {% csrf_token %}
+                        <input type="text" id="username-input" name="username" class="form-control txtInput" placeholder="Your email first part is your Username" required autofocus style="border-top-left-radius: 10px;border-top-right-radius: 20px;border-bottom:1px solid white;">
+                        <input type="password" id="password" name="password" class="form-control txtInput" placeholder="Password" required style="border-bottom-left-radius: 10px;border-bottom-right-radius: 20px;">
+                        <p style="font-size: 12px;margin-top: 15px;margin-bottom: 17px;color:#8e8b8b;">
+                            We’ll call or text you to confirm your number. Standard message and data rates apply.
+                        </p>
+                        <button class="btn btn-lg btn-block btn_sign" type="submit" style="border-radius: 10px;">Sign In</button>
+
+                        <h2 class="text-divider"><span>or</span></h2>
+                        <a href="#" class="btn btn-lg btn-block btn-social" style="border-radius: 10px;">
+                            <span style="float: left;padding-top: 3px;">
+                                <svg viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    role="presentation"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    style="height: 20px; width: 20px; display: block; fill: currentcolor;">
+                                    <defs>
+                                        <path id="a" d="M.001 0H24v23.854H.001z"></path>
+                                    </defs>
+                                    <g fill="none" fill-rule="evenodd">
+                                        <mask id="b" fill="#fff">
+                                            <use xlink:href="#a"></use>
+                                        </mask>
+                                        <path d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854V15.47H7.078V12h3.047V9.356c0-3.007 1.792-4.668 4.533-4.668 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12" fill="#1877F2" mask="url(#b)"></path>
+                                        <path d="M16.671 15.469L17.203 12h-3.328V9.749c0-.949.465-1.874 1.956-1.874h1.513V4.922s-1.374-.234-2.686-.234c-2.741 0-4.533 1.66-4.533 4.668V12H7.078v3.469h3.047v8.385a12.09 12.09 0 003.75 0V15.47h2.796" fill="#FFF">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </span>
+
+                            Continue with Facebook
+                        </a>
+                        <a href="#" class="btn btn-lg btn-block btn-social" style="border-radius: 10px;">
+                            <span style="float: left;padding-top: 3px;">
+                                <svg viewBox="0 0 18 18"
+                                     role="presentation"
+                                     aria-hidden="true"
+                                     focusable="false"
+                                     style="height: 20px; width: 20px; display: block;">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"></path>
+                                        <path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z" fill="#4285F4"></path>
+                                        <path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"></path>
+                                        <path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"></path>
+                                        <path d="M0 0h18v18H0V0z"></path>
+                                    </g>
+                                </svg>
+                            </span>
+
+                            Continue with Google
+                        </a>
+                    </form>
+                </div>
+                <p style="padding-top: 20px;padding-bottom: 30px;">Don't have an account? <a href="#" class="text-center new-account">Continue</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SignUp Modal Part-->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content" style="border-radius: 20px;">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <span data-dismiss="modal" class="btn_close"><span class="lni lni-close"></span></span>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="modal-title"
+                            id="myModalLabel"
+                            style="text-align:center;
+                                    margin-top: -5px;
+                                    font-family: Circular,
+                                        -apple-system,
+                                        BlinkMacSystemFont,
+                                        Roboto,
+                                        Helvetica Neue,
+                                        sans-serif;
+                                    font-size: 18px;
+                                    font-weight: bold;">
+                            Sign Up
+                        </h3>
+                    </div>
+                </div>
+                <hr style="margin-top: 5px;">
+                <div class="account-wall">
+                    <form action="admin//login/" method="post" id="login-form">
+			            {% csrf_token %}
+                        <input type="text" id="username-input" name="{{ form.username.name }}" class="form-control txtInput" placeholder="Email" required autofocus style="border-top-left-radius: 10px;border-top-right-radius: 20px;border-bottom:1px solid white;">
+                        <input type="password" id="password" name="{{ form.password.name }}" class="form-control txtInput" placeholder="Password" required style="border-bottom-left-radius: 10px;border-bottom-right-radius: 20px;">
+                        <p style="font-size: 12px;margin-top: 15px;margin-bottom: 17px;color:#8e8b8b;">
+                            We’ll call or text you to confirm your number. Standard message and data rates apply.
+                        </p>
+                        <button class="btn btn-lg btn-block btn_sign" type="submit" style="border-radius: 10px;">Sign Up</button>
+
+                        <h2 class="text-divider"><span>or</span></h2>
+                        <a href="#" class="btn btn-lg btn-block btn-social" style="border-radius: 10px;">
+                            <span style="float: left;padding-top: 3px;">
+                                <svg viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    role="presentation"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    style="height: 20px; width: 20px; display: block; fill: currentcolor;">
+                                    <defs>
+                                        <path id="a" d="M.001 0H24v23.854H.001z"></path>
+                                    </defs>
+                                    <g fill="none" fill-rule="evenodd">
+                                        <mask id="b" fill="#fff">
+                                            <use xlink:href="#a"></use>
+                                        </mask>
+                                        <path d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854V15.47H7.078V12h3.047V9.356c0-3.007 1.792-4.668 4.533-4.668 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12" fill="#1877F2" mask="url(#b)"></path>
+                                        <path d="M16.671 15.469L17.203 12h-3.328V9.749c0-.949.465-1.874 1.956-1.874h1.513V4.922s-1.374-.234-2.686-.234c-2.741 0-4.533 1.66-4.533 4.668V12H7.078v3.469h3.047v8.385a12.09 12.09 0 003.75 0V15.47h2.796" fill="#FFF">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </span>
+
+                            Continue with Facebook
+                        </a>
+                        <a href="#" class="btn btn-lg btn-block btn-social" style="border-radius: 10px;">
+                            <span style="float: left;padding-top: 3px;">
+                                <svg viewBox="0 0 18 18"
+                                     role="presentation"
+                                     aria-hidden="true"
+                                     focusable="false"
+                                     style="height: 20px; width: 20px; display: block;">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"></path>
+                                        <path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z" fill="#4285F4"></path>
+                                        <path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"></path>
+                                        <path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"></path>
+                                        <path d="M0 0h18v18H0V0z"></path>
+                                    </g>
+                                </svg>
+                            </span>
+
+                            Continue with Google
+                        </a>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--Footer Section-->
+<section>
+    <footer class="bg-dark-purple text-white" style="padding:-10px 0px;">
+        <div style= "background-color:#F8F9F9;font-weight:100px;"class="footer-main">
+            <div class="container">
+                <div style= "color:#000000;font-weight: 100px;"class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <h4 style="font-size:15px;padding-top:15px ;font-weight: bold;padding-bottom: 13px;">Quick Links</h4>
+                        <!--<hr class="deep-purple text-primary accent-2 mb-4 mt-0 d-inline-block mx-auto">-->
+                        <ul class="list-unstyled mb-0">
+                            <!--<li><a style= "color:#000000;" href="http://www.dreamer-donor.com/contact">Contact Us</a></li>-->
+                            <li><a style= "color:#000000;"href="{% url 'about' %}">About Us</a></li>
+                            <li><a style= "color:#000000;"href="{% url 'faqs' %}">FAQs</a></li>
+                            <li><a style= "color:#000000;"href="{% url 'terms_and_conditions' %}">Terms and Conditions</a></li>
+                            <!--<li><a href="#">Privacy Policy</a></li>-->
+
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 ">
+                        <h4 style="font-size:15px;padding-top:15px;font-weight: bold;padding-bottom: 13px;">Contact</h4>
+                        <a href="{% url 'contact' %}" style="color:black;font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;">dreamer.donor@xobotronix.com</a>
+
+                    </div>
+                    <div class="col-lg-2 col-md-2"></div>
+                    <div class="col-lg-5 col-md-5 col-md-12 pull-right">
+                        <div class="sub-newsletter" style="font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;">
+                        <h3 class="mb-2"><i class="fa fa-paper-plane-o mr-2"></i>Subscribe To Our Newsletter</h3>
+                        <p class="mb-0" style="font-family:Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important; color:black">Subscribe Us To get notifications</p><br>
+                        </div>
+                        <div class="input-group sub-input mt-1">
+                            <input type="text" class="form-control input-lg " placeholder="Enter your Email" name="email">
+                            <div class="input-group-append ">
+                                <button type="submit" class="btn btn-primary btn-lg br-tr-3  br-br-3" style="background-color:#ff385c;">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-light text-dark p-0">
+            <div class="container" style="bac">
+                <div class="row d-flex">
+                    <div class="col-lg-6 col-sm-6 mt-3 mb-3 text-align: left;" id="bottom-most" style="padding-top:15px ">
+                        Copyright © 2020 <a href="#" style="color:#000000" class="fs-14">www.dreamer-donor.com</a>.
+                        Developed by <a href="http://www.whitepaper.tech/" target="_blank" style="color:#010101" class="fs-14"><b>Xobotronix</b></a> All rights
+                        reserved.
+                    </div>
+                    <div class="col-lg-6 col-sm-6 mt-3 mb-3 text-align: right;" style="padding-left:250px">
+                        <ul class="list-unstyled list-inline mt-3";"text-align:right">
+                            <li class="list-inline-item" style="border-radius: 50%;background-color:#efefef;">
+                                <a href="javascript:void(0)" target="_blank" >
+                                    <svg viewBox="0 0 32 32" role="img" aria-hidden="false" aria-label="Navigate to Facebook" focusable="false" style="height: 14px;margin-top: 9px; width: 18px; display: block; fill: currentcolor;"><path d="m8 14.41v-4.17c0-.42.35-.81.77-.81h2.52v-2.08c0-4.84 2.48-7.31 7.42-7.35 1.65 0 3.22.21 4.69.64.46.14.63.42.6.88l-.56 4.06c-.04.18-.14.35-.32.53-.21.11-.42.18-.63.14-.88-.25-1.78-.35-2.8-.35-1.4 0-1.61.28-1.61 1.73v1.8h4.52c.42 0 .81.42.81.88l-.35 4.17c0 .42-.35.71-.77.71h-4.21v16c0 .42-.35.81-.77.81h-5.21c-.42 0-.8-.39-.8-.81v-16h-2.52a.78.78 0 0 1 -.78-.78" fill-rule="evenodd"></path></svg>
+                                </a>
+                            </li>
+                            <li class="list-inline-item" style="border-radius: 60%;background-color: #efefef; ">
+                                <a href="javascript:void(0)" target="_blank" style="padding-right: 3px;">
+                                    <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+
+                                </a>
+                            </li>
+                            <li class="list-inline-item" style="border-radius: 50%;background-color:#efefef;">
+                                <a href="javascript:void(0)" target="_blank" style="padding-right: 3px;">
+                                    <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item" style="border-radius: 50%;background-color:#efefef;">
+                                <a href="javascript:void(0)" target="_blank" style="padding-right: 3px;">
+                                    <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item" style="border-radius: 50%;background-color:#efefef;">
+                                <a href="javascript:void(0)" target="_blank" style="padding-right: 3px;">
+                                    <i class="fa fa-google fa-lg"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item" style="border-radius: 50%;background-color:#efefef;">
+                                <a href="javascript:void(0)" target="_blank" style="padding-right: 3px;">
+                                    <i class="fa fa-youtube-play fa-lg" aria-hidden="true"></i>
+
+                                </a>
+                            </li>
+
+                            <li class="list-inline-item" data-toggle="tooltip" title="chat with us for live support" style="padding-left:100px">
+                                <a class="btn-floating btn-sm rgba-white-slight mx-1 waves-effect waves-light" href="#"  data-toggle="modal" data-target="#supportModal">
+                                    <img src="{% static '/support.png' %}" style="border:none;">
+
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</section>
+
+<!-- JQuery js-->
+<script src="{% static "js/vendors/jquery-3.2.1.min.js" %}"></script>
+
+<!-- Bootstrap js -->
+<script src="{% static "plugins/bootstrap-4.3.1-dist/js/popper.min.js" %}"></script>
+<script src="{% static "plugins/bootstrap-4.3.1-dist/js/bootstrap.min.js" %}"></script>
+
+<!--JQuery Sparkline Js-->
+<script src="{% static "js/vendors/jquery.sparkline.min.js" %}"></script>
+
+<!-- Circle Progress Js-->
+<script src="{% static "js/vendors/circle-progress.min.js" %}"></script>
+
+<!-- Star Rating Js-->
+<script src="{% static "plugins/rating/jquery.rating-stars.js" %}"></script>
+
+<!--Counters -->
+<script src="{% static "plugins/counters/counterup.min.js" %}"></script>
+<script src="{% static "plugins/counters/waypoints.min.js" %}"></script>
+<script src="{% static "plugins/counters/numeric-counter.js" %}"></script>
+
+<!--Owl Carousel js -->
+<script src="{% static "plugins/owl-carousel/owl.carousel.js" %}"></script>
+
+<!--Horizontal Menu-->
+<script src="{% static "plugins/horizontal-menu/horizontal.js" %}"></script>
+
+<!--JQuery TouchSwipe js-->
+<script src="{% static "js/jquery.touchSwipe.min.js" %}"></script>
+
+<!--Select2 js -->
+<script src="{% static "plugins/select2/select2.full.min.js" %}"></script>
+<script src="{% static "js/select2.js" %}"></script>
+
+<!-- sticky Js-->
+<script src="{% static "js/sticky.js" %}"></script>
+<!-- Custom scroll bar Js-->
+<script src="{% static "plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js" %}"></script>
+
+<!-- Swipe Js-->
+<script src="{% static "js/swipe.js" %}"></script>
+
+<!-- Scripts Js-->
+<script src="{% static "js/owl-carousel.js" %}"></script>
+
+<!-- Custom Js-->
+<script src="{% static "js/custom.js" %}"></script>
+<script>
+    var x = document.documentElement.clientWidth;
+    console.log(x)
+    if (x > 1000) {
+        $('.btn-float').hide();
+      }else {
+        $('.btn-float').show();
+        $('#back-to-top').remove();
+      }
+</script>
+<!-- CKEditor -->
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+</body>
+</html>

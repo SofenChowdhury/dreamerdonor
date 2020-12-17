@@ -1,0 +1,244 @@
+{% extends "frontend/layout/inner_layout.html" %}
+{% block contents %}
+    <!--<section>-->
+    <!--    <div class="container">-->
+    <!--        <div class="row" style="margin-top: 7%;margin-left: 5px; margin-bottom:7px;">-->
+    <!--            <div class="btn-group btn-breadcrumb">-->
+    <!--                <a href="#" class="btn btn-danger" style="background-color:#ec1f27;"><i class="glyphicon glyphicon-home"></i></a>-->
+    <!--                <a href="{% url 'home' %}" class="btn btn-success" style="background-color:#1f8494;">Home</a>-->
+    <!--                <a href="#" class="btn btn-default">Contact Us</a>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</section>-->
+    <!-- Section -->
+    <section class="sptb bg-white">
+        <div class="container" >
+            <div class="form-group" style="padding:20px">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li>
+                        <div class="alert alert-{{message.level_tag}}" id="msg">
+                            {{ message }}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="row">
+                {% if request.user.is_authenticated %}
+                    <div class="col-lg-6 col-xl-6 col-md-12">
+                        <form action="#" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="card mb-0">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="name1" placeholder="Your Name" name="name" value="{{ current_user.username }}" readonly="">
+                                        <!-- <input type="hidden" class="form-control" id="name1" placeholder="Your Name" name="id" value="{{ current_user.id }}" readonly=""> -->
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" placeholder="Email Address" name="email" value="{{ current_user.email }}" readonly="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="test" class="form-control" id="phone" placeholder="Your Phone No." name="phone" value="" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                                    </div>
+                                    <div class="text-left">
+                                        <button type="submit" class="btn btn-primary btn-lg br-tr-3  br-br-3">
+                                            Send Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                {% else %}
+                    <div class="col-lg-7 col-xl-7 col-md-12">
+                        <form action="#" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="card mb-0">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="name1" placeholder="Your Name" name="name" value="" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email Address" name="email" value="" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="test" class="form-control" id="phone" placeholder="Your Phone No." name="phone" value="" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                                    </div>
+                                    <div class="text-left">
+                                        <button type="submit" class="btn btn-primary btn-lg br-tr-3  br-br-3">
+                                            Send Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
+                <div class="col-md-5 col-xl-5">
+
+                    <div class="container">
+                        <h2 style="font-weight:bold;color:#ec1f27;font-family: sans-serif;">{{contacts_info.title}}</h2>
+                    </div>
+                    <hr>
+                    <div style="display: none" class="row">
+                        <table>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-earphone one" style="width:30px;padding:10px 0px;"></span></td>
+                                <td>{{ contacts_info.phone }}</td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-envelope one" style="width:30px;padding:10px 0px;"></span></td>
+                                <td>{{ contacts_info.email }}</td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-map-marker one" style="width:30px;padding:10px 0px;"></span></td>
+                                <td>{{contacts_info.address}}</td>
+                            </tr>
+                            <tr>
+                                <td><span class="fa fa-clock-o one" style="width:30px;padding:10px 0px;"></span></td>
+                                <td>{{contacts_info.start_time}} To {{contacts_info.end_time}}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/Section -->
+
+    <!--Contact-->
+    <div class="sptb">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 col-xl-12  col-md-12">
+                    <div class="map1">
+                        <div class="map-header-layer" id="map2">
+                            <!--<iframe width="100%" height="380" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=turkey&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>-->
+                            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1dJ9FWyS1755f8SsLugtce932Lxr4w9RS" width="100%" height="480"></iframe>
+
+                            <!--<div id="map_canvas" style="border: 2px solid #3872ac;"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        setTimeout(function(){
+            if($('#msg').length > 0){
+                $('#msg').remove();
+            }
+        }, 3000)
+    </script>
+    <script
+  src="https://code.jquery.com/jquery-1.7.2.js"
+  integrity="sha256-FxfqH96M63WENBok78hchTCDxmChGFlo+/lFIPcZPeI="
+  crossorigin="anonymous"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap" async defer></script>
+    <script>
+        var locations = [
+          ['Location 1 Name', 'New York, NY', 'Location 1 URL'],
+          ['Location 2 Name', 'Newark, NJ', 'Location 2 URL'],
+          ['Location 3 Name', 'Philadelphia, PA', 'Location 3 URL']
+        ];
+
+        var geocoder;
+        var map;
+        var bounds = new google.maps.LatLngBounds();
+
+        function initialize() {
+          map = new google.maps.Map(
+            document.getElementById("map_canvas"), {
+              center: new google.maps.LatLng(37.4419, -122.1419),
+              zoom: 13,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+          geocoder = new google.maps.Geocoder();
+
+          for (i = 0; i < locations.length; i++) {
+
+
+            geocodeAddress(locations, i);
+          }
+        }
+        google.maps.event.addDomListener(window, "load", initialize);
+
+        function geocodeAddress(locations, i) {
+          var title = locations[i][0];
+          var address = locations[i][1];
+          var url = locations[i][2];
+          geocoder.geocode({
+              'address': locations[i][1]
+            },
+
+            function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                var marker = new google.maps.Marker({
+                  icon: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
+                  map: map,
+                  position: results[0].geometry.location,
+                  title: title,
+                  animation: google.maps.Animation.DROP,
+                  address: address,
+                  url: url
+                })
+                infoWindow(marker, map, title, address, url);
+                bounds.extend(marker.getPosition());
+                map.fitBounds(bounds);
+              } else {
+                alert("geocode of " + address + " failed:" + status);
+              }
+            });
+        }
+
+        function infoWindow(marker, map, title, address, url) {
+          google.maps.event.addListener(marker, 'click', function() {
+            var html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href='" + url + "'>View location</a></p></div>";
+            iw = new google.maps.InfoWindow({
+              content: html,
+              maxWidth: 350
+            });
+            iw.open(map, marker);
+          });
+        }
+
+        function createMarker(results) {
+          var marker = new google.maps.Marker({
+            icon: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
+            map: map,
+            position: results[0].geometry.location,
+            title: title,
+            animation: google.maps.Animation.DROP,
+            address: address,
+            url: url
+          })
+          bounds.extend(marker.getPosition());
+          map.fitBounds(bounds);
+          infoWindow(marker, map, title, address, url);
+          return marker;
+        }
+    </script>
+    <!--/Contact-->
+{% endblock %}
+{% block js %}
+
+{% endblock %}

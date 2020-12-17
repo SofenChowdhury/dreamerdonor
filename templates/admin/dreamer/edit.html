@@ -1,0 +1,165 @@
+{% extends 'admin/layouts/back_layout.html' %}
+{% block contants %}
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+    input:focus {
+      border: 1px solid #ec1f27 !important;
+    }
+    select:focus {
+      border: 1px solid #ec1f27 !important;
+    }
+    textarea:focus {
+      border: 1px solid #ec1f27 !important;
+    }
+</style>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-md-12">
+	    <div class="card ">
+	        <div class="card-header ">
+	            <h3 class="card-title" style="color: #ec1f27;font-family: sans-serif;font-weight:bold;">Edit {{ title }}</h3>
+	        </div>
+	        <form action="{% url 'updateIdea' %}" method="POST"
+	              enctype="multipart/form-data">
+	            {% csrf_token %}
+	            <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <label class="form-label text-dark">Title<span style="color:red;padding-left:5px;">*</span></label>
+                                <input type="text" class="form-control" name="title" required placeholder="Title" value="{{get_idea.title}}">
+                                <input type="hidden" class="form-control" name="id" required placeholder="ID" value="{{get_idea.id}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <label class="form-label text-dark">Sub Title<span style="color:red;padding-left:5px;">*</span></label>
+                                <input type="text" class="form-control" name="sub_title" placeholder="Sub-Title" value="{{get_idea.sub_title}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <label class="form-label text-dark">Plan Documents<span style="color:red;padding-left:5px;">*</span></label>
+                                <input type="file" class="form-control" name="plan_doc">
+                                {%if get_idea.plan_doc %}
+                                <a href="/{{get_idea.plan_doc}}"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label class="form-label text-dark">Description<span style="color:red;padding-left:5px;">*</span></label>
+                                <textarea class="form-control" name="description" rows="3" required placeholder="Description">{{get_idea.description}}</textarea>
+                                <!--<span style="color: red">Maximum 300 words</span>-->
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label>Upload Images<span style="color:red;padding-left:5px;">*</span></label>
+                            <input type="file" name="images" accept=".jpg, .png, image/jpeg, image/png" multiple>
+                            {% for get_image in get_images %}
+    	                    <img src="/{{get_image.Image}}" height="90px;" id="image{{get_image.id}}">
+    	                    <p class="fa fa-times-circle" id="close{{get_image.id}}" style="position:absolute;margin-left:-15px;color:#dc1e1e;font-size:15px;border:1px solid white;border-radius:50%;cursor:pointer"></p>
+    	                   <script>
+                                $('#close{{get_image.id}}').click(function(){
+
+                                    var del_idea_image = {{get_image.id}};
+
+                                    console.log(del_idea_image);
+                                    $.ajax({
+                                        url: "/backend/dreamer/idea/image/delete/"+del_idea_image,
+                                        method: 'get',
+                                        success: function(result){
+                                            console.log(result)
+                                            $('#image{{get_image.id}}').hide();
+                                            $('#close{{get_image.id}}').hide();
+                                        }
+                                    });
+                                });
+                            </script>
+    	                    {% endfor %}
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label>Upload Video<span style="color:white;padding-left:15px;"> </span></label>
+                            <input type="file" name="video" accept="video/*">
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <label class="form-label text-dark">Video Link<span style="color:red;padding-left:5px;">*</span></label>
+                                <input type="text" class="form-control" name="video_link" placeholder="insert video link from Youtube" value="{{get_idea.video_link}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <input type="submit" class="btn btn-success" value="Post Idea" style="background-color:#ec262e;">
+                </div>
+	        </form>
+	    </div>
+	</div>
+</div>
+<script>
+    $('#property_type_id').change(function(){
+        $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+        var tag_type = $('#property_type_id option:selected').val();
+
+        console.log(tag_type)
+        if(tag_type == '6'){
+            $(".extra").hide();
+        }
+        $.ajax({
+            url: '/get_item_tags/'+tag_type,
+            method: 'get',
+
+            success: function(result){
+                    $("#tag_name").empty()
+                    console.log(result.length)
+                    for ( var i = 0, l = result.length; i < l; i++ ) {
+                        console.log(result[i].tag_name)
+                        $("#tag_name").append('<span class="custom-control custom-checkbox" style="padding-right:10px;"><input type="checkbox" class="custom-control-input" value="'+result[i].id+'" name="tag_name" id="customCheck'+result[i].id+'" ><label class="custom-control-label" for="customCheck'+result[i].id+'">'+result[i].tag_name+'</label></span>');
+                    }
+                }
+        });
+    });
+    $('#city_id').change(function(){
+        $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+        var city_id = $('#city_id option:selected').val();
+        console.log(city_id)
+        $.ajax({
+            url: '/get_location/'+city_id,
+            method: 'get',
+
+            success: function(result){
+                    console.log(result.length)
+                    $("#area_id")
+                    .find('option')
+                    .remove()
+                    .end()
+                    .append('<option value="">Select Area</option>');
+                    for ( var i = 0 ; i < result.length; i++ ) {
+                        $("#area_id").append(new Option(result[i].area_name, result[i].id));
+                    }
+                }
+        });
+    });
+</script>
+{% endblock %}
+{% block css %}
+<link href="{% static 'plugins/datatable/dataTables.bootstrap4.min.css' %}" rel="stylesheet" />
+<link href="{% static 'plugins/datatable/jquery.dataTables.min.css' %}" rel="stylesheet" />
+{% endblock %}
+{% block js %}
+<!-- Data tables -->
+<script src="{% static 'plugins/datatable/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatable/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/datatable.js' %}"></script>
+<!-- Custom Js-->
+<script src="{% static 'js/admin-custom.js' %}"></script>
+{% endblock %}

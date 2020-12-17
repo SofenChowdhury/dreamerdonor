@@ -1,0 +1,134 @@
+{% extends "frontend/layout/inner_layout.html" %}
+{% block contents %}
+{% load static %}
+{% load humanize %}
+    <!--Section-->
+    <section>
+
+        <!-- Display Error messages -->
+        <div class="form-group" >
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>
+                    <div class="alert alert-{{message.level_tag}}" id="msg">
+                        {{ message }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="container" style="padding-top:50px">
+            <div class="row ">
+                <div class="col-lg-8 col-md-12 col-md-12">
+                    <div class="card ">
+                        <div class="card-header ">
+                            <h3 class="card-title" style="font-weight:bold;color:#ec1f27;font-family: sans-serif;font-size:17px;">Post Idea</h3>
+                        </div>
+                        <form action="{% url 'SubmitIdea' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label text-dark">Title<span style="color:red;padding-left:5px;">*</span></label>
+                                            <input type="text" class="form-control" name="title" required placeholder="Title">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label text-dark">Sub Title<span style="color:red;padding-left:5px;">*</span></label>
+                                            <input type="text" class="form-control" name="sub_title" placeholder="Sub-Title">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label text-dark">Plan Documents<span style="color:red;padding-left:5px;">*</span></label>
+                                            <input type="file" class="form-control" name="plan_doc">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-label text-dark">Description<span style="color:red;padding-left:5px;">*</span></label>
+                                            <textarea class="form-control" name="description" rows="3" required placeholder="Description"></textarea>
+                                            <!--<span style="color: red">Maximum 300 words</span>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <label>Upload Images<span style="color:red;padding-left:5px;">*</span></label>
+                                        <input type="file" name="images" accept=".jpg, .png, image/jpeg, image/png" multiple>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <label>Upload Video<span style="color:white;padding-left:15px;"> </span></label>
+                                        <input type="file" name="video" accept="video/*">
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label text-dark">Video Link<span style="color:red;padding-left:5px;">*</span></label>
+                                            <input type="text" class="form-control" name="video_link" placeholder="insert video link from Youtube">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer ">
+                                <input type="submit" class="btn btn-success" value="Post Idea" style="background-color:#ec262e;">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12">
+                    <div class="card contact" style="height: 400px;">
+                        <div class="card-body item-user">
+                            <p class="mb-4" style="text-align: center;border-bottom: 1px solid lightgray;padding-bottom: 10px;">
+                                <img src="/{{companyinfo.logo}}" style="width: 40%;"></p>
+                            <div style="">
+                                <form action="#" method="GET" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="">
+                                        <div class="">
+                                            <div class="form-group" style="margin-bottom: 3px;">
+                                                {{companyinfo.title}}
+                                            </div>
+                                            <div class="form-group" style="margin-bottom: 3px;">
+                                                {{user_details.email}}
+                                            </div>
+                                            <div class="form-group" style="margin-bottom: 3px;">
+                                                {{user_details.phone}}
+                                            </div>
+                                            <div class="text-left">
+                                                <button type="button" class="btn btn-primary" style="border-radius: 0px;width: 33%;">
+                                                    Send mail
+                                                </button>
+                                                <a href="http://www.facebook.com/sharer/sharer.php?u={{request.scheme}}://{{request.get_host}}/idea/details/{{ get_idea.id|urlencode }}" target="_blank" class="btn btn-info" style="border-radius: 0px;width: 32%;">
+                                                    <i class="fa fa-facebook"></i> Share
+                                                </a>
+                                                <a href="#" data-toggle="modal" data-target="#call" class="btn btn-default callusbtn" style="border-radius: 0px;width: 33%;background-color:#43aa8b;color:white;">
+                                                    <i class="fa fa-phone"></i> Call Us
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class=" item-user-icons mt-4">
+                                <a href="https://www.facebook.com/jamspropertycom" class="facebook-bg mt-0" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.youtube.com/channel/UCuno8JW0lkVTbzyxy_tTWeA?view_as=subscriber" class="twitter-bg"><i class="fa fa-youtube"></i></a>
+                                <a href="https://twitter.com/JamspropertyC" class="bg-linkedin"><i class="fa fa-twitter" style="color:white;"></i></a>
+                                <a href="https://www.linkedin.com/company/jamsproperty" class="dribbble-bg" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </section>
+    <script type="text/javascript">
+        setTimeout(function(){
+            if($('#msg').length > 0){
+                $('#msg').remove();
+            }
+        }, 3000)
+    </script>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'layout/back_layout.html' %}
+{% block contants %}
+{% load static %}
+{% load humanize %}
+<style>
+
+	table tr td{
+		width: 30%;
+		padding:5px 10px 5px 10px;
+	}
+	.water_mark{
+		background-color: rgb(0,0,0,1.2);
+		width: 30%;
+		z-index: 99999;
+		margin-top: -80px;
+		padding-left: 30px;
+		padding-bottom: 30px;
+	}
+</style>
+<div class="row">
+	<div class="col-md-12 col-lg-12">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">{{title}}</div>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-xl-7 col-lg-7 col-md-12">
+						<!--Classified Description-->
+										{% for image in ideaimage %}
+											<div class="carousel-item">
+												<img src="/{{pro_image.Image}}" alt="img" style="height:400px; width:100%;">
+												<div class="water_mark">
+													<img src="{% static '/images/brand/101.png' %}" style="width: 80%;">
+												</div>
+											</div>
+										{% endfor %}
+							<div class="tab-content border-0 p-5 bg-white details-tab-content">
+								
+								<div class="tab-pane" id="tab-4">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="table-responsive" style="overflow-x: hidden;">
+												<div class="row">
+													<div class="col-md-12">
+														<table class="table-bordered border-top mb-0">
+															<tbody>
+																<tr>
+																	<td>Title</td>
+																	<td><span class="font-weight-bold">{{ idea.title}}</span></td>
+																</tr>
+																<tr>
+																	<td>Sub_Title</td>
+																	<td><span class="font-weight-bold"> {{ idea.sub_title}}</span></td>
+																</tr>
+																<tr>
+																	<td>Description</td>
+																	<td><span class="font-weight-bold">{{idea.description}}</span></td>
+																</tr>
+																<tr>
+																	<td>Plan Document</td>
+																	<td><span class="font-weight-bold">{{idea.plan_doc}}</span></td>
+																</tr>>
+																<tr>
+																	<td>Posted Time</td>
+																	<td><span class="font-weight-bold">{{idea.posted_time}}</span></td>
+																</tr>
+
+																
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="tab-5">
+									<ul class="list-unstyled video-list-thumbs row ">
+										<li class="mb-0">
+											<a data-toggle="modal" data-target="#homeVideo"> 
+												<video controls class="img-responsive">
+													<source src="#" type="video/mp4">
+													<source src="#" type="video/ogg">
+												</video>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="pt-4 pb-4 pl-5 pr-5 border-top bg-white">
+								<div class="list-id">
+									<div class="row">
+										<div class="col col-auto">
+											Posted By <a class="mb-0 font-weight-bold"><span style="color: tomato">{{idea.Posted_by}}</span></a> - {{idea.Posted_time}}
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- table-wrapper -->
+		</div>
+		<!-- section-wrapper -->
+	</div>
+</div>
+{% endblock %}
+{% block css %}
+
+{% endblock %}
+{% block js %}
+
+{% endblock %}
